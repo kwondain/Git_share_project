@@ -1,0 +1,44 @@
+@charset "UTF-8";
+
+*{
+	margin: 0px;
+	padding: 0px;
+}
+html body{
+	height: 100%;
+	background-image: url("memberlogin.jpg");
+	background-attachment: fixed;
+	background-repeat: no-repeat;
+	background-position: 0 0;
+	background-size: cover;
+	
+}
+
+#wrapbox{
+	position: absolute;
+	width: 70%;
+	height: 750px;
+	border: 4px solid #fff;
+	top: 15%;
+	left: 15%;
+}
+
+.table{
+	margin-left: 110px;	
+	margin-top: 40px;
+	width: 68%;
+
+}
+th, td{
+	padding: 1.5%;
+	text-align: left;
+}
+#postcodify_search_button{
+	display:none;
+}
+
+#wrapbox input[type="submit"]{
+	width: 400px;
+	height: 30px;
+}
+	

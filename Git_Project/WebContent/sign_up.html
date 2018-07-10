@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style>
+	#wrap{
+		width : 720px;
+		margin: 0 auto;
+		border: 1px solid #ccc;
+	}
+	.button{
+		width:100px;
+		height: 20px;
+		border: 1px solid #ccc;
+	}
+	.submit{
+		margin: 0 auto;
+	}
+	#postcodify_search_button, #submit{
+	display:none;
+	}
+	header{
+		border-bottom:2px solid #00B700;
+	}
+	header p{
+		display: inline;
+		position: absolute;
+		top: 90px;
+	}
+	td{
+		border-bottom: 1px solid #333;
+		width:550px;
+		padding-top:10px;
+		padding-bottom: 10px;
+		padding-left:10px;
+	}
+	th{
+		background-color: #ccc;
+		width: 200px;
+		text-align: left;
+		padding-left: 3%;
+		border-bottom: 1px solid #333;
+	}
+	.submit img{
+		position:relative;
+		margin-top:5px;
+		left:40%;
+		width: 150px;
+	}
+</style>
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+<script src="//d1p7wdleee1q2z.cloudfront.net/post/search.min.js"></script>
+<script> $(function() { $("#postcodify_search_button").postcodifyPopUp(); }); </script>
+<script type="text/javascript">
+	function chk(){
+		var id = joinForm.id;
+		var pass1 =joinForm.pwd1;
+		var pass2 =joinForm.pwd2;
+		
+		if(id.value == ""){
+			alert("아이디를 입력해주세요.");
+			id.focus();
+			return false;
+		}
+		if(pass1.value == ""){
+			alert("비밀번호를 입력해주세요.");
+			return false;
+		}
+		if(pass2.value == ""){
+			alert("비밀번호 확인란을 입력해주세요.");
+			return false;
+		} 
+		if(pass1.value!=pass2.value){
+			alert("비밀번호를 다시 확인해주세요.");
+			return false;
+		} 
+		return true;
+		
+	}
+</script>
+<body>
+<div id="wrap">
+<button id="postcodify_search_button">검색</button><br/>
+	<form name="joinForm" onsubmit="chk()" action="join_check.jsp" method="post">
+		<header>
+		<img src="images/lovingpet.png"> <p>*아래 회원가입 폼을 입력해주세요.<p>
+		</header>
+		<table>
+			<tr>
+				<th>아이디</th>
+				<td>
+					<input type="text" id="id" name="id"><br>
+					* 중복된 아이디는 회원 가입이 되지 않을 수 있습니다.
+				</td>
+			</tr>
+			<tr>
+				<th>비밀번호</th>
+				<td><input type="text" id="pwd1" name="pwd1"></td>
+			</tr>
+			<tr>
+				<th>비밀번호 확인</th>
+				<td><input type="password" id="pwd2" name="pwd2"></td>
+			</tr>
+			<tr>
+				<th>이름</th>
+				<td><input type="text" id="name" name="name"></td>
+			</tr>
+			<tr>
+				<th>생년월일</th>
+				<td><input type="date" id="birth" name="birth"></td>
+			</tr>
+			<tr>
+				<th>성별</th>
+				<td>
+					남<input type="radio" name="gender" id="M" value="남자">
+					여<input type="radio" name="gender" id="F" value="여자">
+				</td>
+			</tr>
+			<tr>
+				<th>이메일</th>
+				<td>
+					<input type="text" name="email1">@
+					<select name="email2">
+						<option value="naver.com">naver.com</option>
+						<option value="hanmail.net">hanmail.net</option>
+						<option value="gmail.com">gmail.com</option>
+						<option value="nate.com">nate.com</option>
+						<option value="empal.com">empal.com</option>
+						<option value="dreamwiz.com">dreamwiz.com</option>
+						<option value="hotmail.com">hotmail.com</option>
+						<option value="freechal.com">freechal.com</option>
+						<option value="hanafos.com">hanafos.com</option>
+						<option value="korea.com">korea.com</option>
+						<option value="lycos.co.kr">lycos.co.kr</option>
+						<option value="paran.com">paran.com</option>
+						<option value="msn.co.kr">msn.co.kr</option>
+						<option value="yahoo.co.kr">yahoo.co.kr</option>
+						<option value="sayclub.com">sayclub.com</option>
+					</select>
+				</td>
+			</tr>
+			<tr>
+				<th>연락처</th>
+				<td>
+					<select name="tel1">
+						<option value="010">010</option>
+						<option value="010">011</option>
+						<option value="010">070</option>
+						<option value="010">010</option>
+					</select>-
+					<input type="text" name="tel2">-
+					<input type="text" name="tel3">
+			</tr>
+			<tr>
+				<th>주소</th>
+				<td>
+					<input type="text" name="address1" class="postcodify_postcode5" value="" />
+					<label for ="postcodify_search_button" class="button"><img src="images/address.gif"></label><br>
+					<input type="text" name="address2" class="postcodify_address" value="" /><br />
+					<input type="text" name="address3" class="postcodify_details" value="" /><br />
+					<input type="text" name="address4" class="postcodify_extra_info" value="" /><br />
+				</td>
+			</tr>
+		</table>
+		<input type="submit" id="submit" value="가입하기">
+		<label for="submit" class="submit"><img src="images/join.gif"></label>
+	</form>
+</div>
+</body>
+</html>
