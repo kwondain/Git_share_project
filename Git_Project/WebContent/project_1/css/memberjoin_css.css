@@ -38,7 +38,8 @@ th, td{
 }
 
 #wrapbox input[type="submit"]{
-	width: 400px;
+	width: 100px;
 	height: 30px;
+	padding-top: 10px
 }
 	
