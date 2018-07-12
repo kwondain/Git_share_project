@@ -24,7 +24,7 @@ html body{
 }
 
 .table{
-	margin-left: 110px;	
+	margin-left: 17%;	
 	margin-top: 40px;
 	width: 68%;
 
@@ -38,8 +38,18 @@ th, td{
 }
 
 #wrapbox input[type="submit"]{
-	width: 100px;
-	height: 30px;
-	padding-top: 10px
+	width: 400px;
+	height: 50px;
+    margin-left: 25%;
+    margin-top: 30px;
+	background-color: #0B3861;
+	text-align: center;
+	border: 0px;
+	color: #fff;
+}
+#wrapbox input[type="submit"]:hover{
+	background-color: #81BEF7;
+	color: black;
+
 }
 	
