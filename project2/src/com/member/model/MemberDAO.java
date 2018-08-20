@@ -145,9 +145,35 @@ public class MemberDAO {
 		return result; // 검색 결과 리턴
 	}
 	/* 해당 사용자 디비 내용 가져오기 */
-	/*public MemberBean getMember(String id) {		
-
-	}*/
+	public MemberBean getMember(String id) {		
+		MemberBean bean = null;
+		try{
+			//con=ds.getConnection(); // 커넥션 풀로 디비 연동
+			sql = "select * from pet_Member where "
+				  + " member_id =? ";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, id); // id를 물음표에 배정한다.
+			rs = pstmt.executeQuery(); // sql문 실행
+			if(rs.next()){ // 검색된 레코드가 있는
+				bean = new MemberBean();  // DTO 객체 생성
+				// 디비 테이블에서 값을 가져와 빈 클래스에 저장
+				bean.setMember_id(rs.getString("member_id"));
+				bean.setMember_pass(rs.getString("member_pass"));
+				bean.setMember_name(rs.getString("member_name"));
+				bean.setMember_nickname(rs.getString("member_nickname"));
+				bean.setMember_gender(rs.getString("member_gender"));
+				bean.setMember_email(rs.getString("member_email"));
+				bean.setMember_zip1(rs.getString("member_zip1"));
+				bean.setMember_zip2(rs.getString("member_zip2"));
+				bean.setMember_addr1(rs.getString("member_addr1"));
+				bean.setMember_addr2(rs.getString("member_addr2"));		
+			}
+			rs.close(); pstmt.close(); con.close();
+		}catch(Exception e){
+			e.printStackTrace();
+		}
+		return bean;  // 빈 객체(레코드) 리턴
+	}
 	/* 회원 정보 수정 */
 	public int updateMember(MemberBean bean) {
 		return 0;

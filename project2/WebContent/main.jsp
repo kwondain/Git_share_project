@@ -12,5 +12,6 @@
 </head>
 <body>
 <a href="./member_Join.do" onfocus="this.blur()">회원가입</a></li>
+<a href="./member_Login.do" onfocus="this.blur()">로그인</a></li>
 </body>
 </html>
