@@ -20,7 +20,7 @@ public class FrontController extends HttpServlet {
 		Action action = null;
 		
 		Properties prop = new Properties();
-		FileInputStream fis = new FileInputStream("C:\\jspworkspace\\MVC_Petshop\\src\\com\\controller\\action\\mapping.properties");
+		FileInputStream fis = new FileInputStream("C:\\Users\\Administrator\\git\\Git_share_project\\project2\\src\\com\\controller\\action\\mapping.properties");
 		//프로퍼티 파일 로드, 자바경로구분은 \\ or /
 		prop.load(fis);
 		fis.close();

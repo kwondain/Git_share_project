@@ -22,7 +22,7 @@ public class MemberJoinOkAction implements Action {
 		response.setContentType("text/html;charset=UTF-8");
 		request.setCharacterEncoding("UTF-8");
 		// 이진파일 업로드 폴더 경로	
-		String saveFolder="C:\\jspworkspace\\MVC_Petshop\\WebContent\\upload";
+		String saveFolder="C:\\Users\\Administrator\\git\\Git_share_project\\project2\\WebContent\\upload";
 		// 이진파일 업로드 최대 크기(5MB)-크기 지정
 		int fileSize=5*1024*1024;	
 		// 이진파일을 업로드 시키는 JAVA 클래스 객체 생성
