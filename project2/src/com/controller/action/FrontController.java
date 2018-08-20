@@ -20,8 +20,8 @@ public class FrontController extends HttpServlet {
 		Action action = null;
 		
 		Properties prop = new Properties();
-		FileInputStream fis = new FileInputStream("C:\\Users\\Administrator\\git\\Git_share_project\\project2\\src\\com\\controller\\action\\mapping.properties");
-		//프로퍼티 파일 로드, 자바경로구분은 \\ or /
+		FileInputStream fis = new FileInputStream("C:\\Users\\HY_LEE\\git\\Git_share_project\\project2\\src\\com\\controller\\action\\mapping.properties");
+		//�봽濡쒗띁�떚 �뙆�씪 濡쒕뱶, �옄諛붽꼍濡쒓뎄遺꾩� \\ or /
 		prop.load(fis);
 		fis.close();
 		String value=prop.getProperty(command);
@@ -31,8 +31,8 @@ public class FrontController extends HttpServlet {
 				StringTokenizer st = new StringTokenizer(value,"|");
 				String url_1 = st.nextToken();
 				String url_2 = st.nextToken();
-				Class url = Class.forName(url_2); //문자열로 읽어온 클래스 파일명을 객체화한다.
-				//객체화한 클래스는 Object형이므로 강제 다운캐스팅해야한다.
+				Class url = Class.forName(url_2); //臾몄옄�뿴濡� �씫�뼱�삩 �겢�옒�뒪 �뙆�씪紐낆쓣 媛앹껜�솕�븳�떎.
+				//媛앹껜�솕�븳 �겢�옒�뒪�뒗 Object�삎�씠誘�濡� 媛뺤젣 �떎�슫罹먯뒪�똿�빐�빞�븳�떎.
 				action = (Action)url.newInstance();
 				try {
 					forward=action.execute(request, response);
