@@ -1,0 +1,15 @@
+<Context> 
+  <Resource 
+   name="jdbc/OracleDB" 
+   auth="Container"
+   type="javax.sql.DataSource"   
+   driverClassName="oracle.jdbc.driver.OracleDriver"   
+   url="jdbc:oracle:thin:@127.0.0.1:1521:xe"
+   username="petshop" 
+   password="petshop"
+   maxActive="200" 
+   maxIdle="100"/>  
+</Context>
+
+<!-- maxActive : 최대 커넥션 수 지정
+     maxIdle : 유휴시간 최대 컨넥션 수 지정 -->
