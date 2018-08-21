@@ -49,39 +49,9 @@ public class MemberDAO {
 		
 	}
 	/* 우편번호 검색 메소드 */
-	public List searchZipcode(String dong) {
-		List zipcodeList = new ArrayList();
+/*	public List searchZipcode(String dong) {
 		
-		try{
-			//con = ds.getConnection(); // 디비 연동
-			sql = "select * from zipcode where dong like ?";
-			// like는 포함문자열을 검색하는 키워드이다.
-			
-			pstmt = con.prepareStatement(sql);
-			pstmt.setString(1, "%"+dong+"%");
-			// %동% 형태로 사용자가 입력한 동을 포함한 레코드를 검색한다.
-			rs=pstmt.executeQuery();
-			while(rs.next()){ // 검색된 동이 있는 경우
-				// 검색된 db의 레코드를 대상으로 필드 단위로 가져온다.
-				String zipcode=rs.getString("zipcode"); // 우편번호
-				String sido = rs.getString("sido"); // 시도
-				String gugun = rs.getString("gugun"); // 구군
-				String dong2 = rs.getString("dong"); // 읍면동
-				String bunji = rs.getString("bunji"); // 번지
-				// 번지를 뺀 주소저장
-				String addr = sido+" "+gugun+" "+dong2;
-				// 번지를 포함한 주소
-				String addr2 = sido+" "+gugun+" "+dong2+" "+bunji;
-								
-				// List 컬렉션에 요소를 레코드 형태로 저장한다.
-				zipcodeList.add(zipcode+","+addr+","+addr2);
-			}
-			rs.close(); pstmt.close(); con.close();
-		}catch(Exception e){
-			e.printStackTrace();
-		}		
-		return zipcodeList; // 리스트를 호출한 곳으로 리턴한다.
-	}
+	}*/
 	/* 비번 찾기 */
 	public MemberBean findpwd(String pwd_id, String pwd_name) {
 		// 사용자의 id와 name으로 비번 조회 메서드
@@ -112,10 +82,10 @@ public class MemberDAO {
 			sql="insert into pet_Member "
 		+ " (member_id,member_pass,member_name, "
 		+ " member_nickname,member_gender,member_email, "
-		+ "	member_zip1,member_zip2,"
+		+ "	member_zip, "
 		+ " member_addr1,member_addr2 "
 		+ " ) "
-		+ " values(?,?,?,?,?,?,?,?,?,?)";
+		+ " values(?,?,?,?,?,?,?,?,?)";
 			pstmt = con.prepareStatement(sql);
 			// 빈의 Getter()로 물음표 값 배정
 			pstmt.setString(1,bean.getMember_id());
@@ -124,10 +94,9 @@ public class MemberDAO {
 			pstmt.setString(4,bean.getMember_nickname());
 			pstmt.setString(5,bean.getMember_gender());
 			pstmt.setString(6,bean.getMember_email());
-			pstmt.setString(7,bean.getMember_zip1());
-			pstmt.setString(8,bean.getMember_zip2());
-			pstmt.setString(9,bean.getMember_addr1());
-			pstmt.setString(10,bean.getMember_addr2());
+			pstmt.setString(7,bean.getMember_zip());
+			pstmt.setString(8,bean.getMember_addr1());
+			pstmt.setString(9,bean.getMember_addr2());
 			System.out.print(pstmt);
 			pstmt.executeUpdate(); // insert문 실행
 			
@@ -182,8 +151,7 @@ public class MemberDAO {
 				bean.setMember_nickname(rs.getString("member_nickname"));
 				bean.setMember_gender(rs.getString("member_gender"));
 				bean.setMember_email(rs.getString("member_email"));
-				bean.setMember_zip1(rs.getString("member_zip1"));
-				bean.setMember_zip2(rs.getString("member_zip2"));
+				bean.setMember_zip(rs.getString("member_zip"));
 				bean.setMember_addr1(rs.getString("member_addr1"));
 				bean.setMember_addr2(rs.getString("member_addr2"));		
 			}
@@ -200,7 +168,7 @@ public class MemberDAO {
 			sql="update pet_Member set member_pass=?,"
 			   +" member_name=?,member_nickname=?,"
 			   +" member_gender=?,member_email=?, "
-			   + " member_zip1=?,member_zip2=?,"		
+			   + " member_zip=?, "		
 			   + " member_addr1=?,member_addr2=?"
 			   + " where member_id=?";
 			pstmt = con.prepareStatement(sql);
@@ -209,11 +177,10 @@ public class MemberDAO {
 			pstmt.setString(3,bean.getMember_nickname());
 			pstmt.setString(4,bean.getMember_gender());
 			pstmt.setString(5,bean.getMember_name());
-			pstmt.setString(6,bean.getMember_zip1());
-			pstmt.setString(7,bean.getMember_zip2());
-			pstmt.setString(8,bean.getMember_addr1());
-			pstmt.setString(9,bean.getMember_addr2());
-			pstmt.setString(10,bean.getMember_id());
+			pstmt.setString(6,bean.getMember_zip());
+			pstmt.setString(7,bean.getMember_addr1());
+			pstmt.setString(8,bean.getMember_addr2());
+			pstmt.setString(9,bean.getMember_id());
 			re=pstmt.executeUpdate(); // update문 실행
 			// 성공적으로 update가 된 경우 1리턴
 			pstmt.close(); con.close();

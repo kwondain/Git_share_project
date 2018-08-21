@@ -7,8 +7,7 @@ public class MemberBean {
 	private String member_nickname;
 	private String member_gender;
 	private String member_email;
-	private String member_zip1;
-	private String member_zip2;
+	private String member_zip;
 	private String member_addr1;
 	private String member_addr2;
 	public String getMember_id() {
@@ -47,17 +46,11 @@ public class MemberBean {
 	public void setMember_email(String member_email) {
 		this.member_email = member_email;
 	}
-	public String getMember_zip1() {
-		return member_zip1;
+	public String getMember_zip() {
+		return member_zip;
 	}
-	public void setMember_zip1(String member_zip1) {
-		this.member_zip1 = member_zip1;
-	}
-	public String getMember_zip2() {
-		return member_zip2;
-	}
-	public void setMember_zip2(String member_zip2) {
-		this.member_zip2 = member_zip2;
+	public void setMember_zip(String member_zip) {
+		this.member_zip = member_zip;
 	}
 	public String getMember_addr1() {
 		return member_addr1;

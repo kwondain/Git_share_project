@@ -34,14 +34,18 @@
 	  		$("#member_nickname").val("").focus();
 	  		return false;
 	  	}
-	  	if($.trim($("#member_zip1").val())==""){
-	  		alert("우편번호를 입력하세요!");
-	  		$("#member_zip1").val("").focus();
+	  	if($('input:radio[name=member_gender]').is(':checked')==false){
+	  		alert("성별을 입력하세요!");
 	  		return false;
 	  	}
-	  	if($.trim($("#member_zip2").val())==""){
-	  		alert("우펀번호를 입력하세요!");
-	  		$("#member_zip2").val("").focus();
+	  	if($.trim($("#member_email").val())==""){
+	  		alert("이메일을 입력하세요!");
+	  		$("#member_email").val("").focus();
+	  		return false;
+	  	}
+	  	if($.trim($("#member_zip").val())==""){
+	  		alert("우편번호를 입력하세요!");
+	  		$("#member_zip").val("").focus();
 	  		return false;
 	  	}
 	  	if($.trim($("#member_addr1").val())==""){
@@ -55,19 +59,6 @@
 	  		return false;
 	  	}
 	  }
-	
-   /* 우편번호 입력 창 클릭 시 경고창  */	  
-  function post_search(){
-    	alert("우편번호검색 버튼을 클릭하세요!");
-  }
-
-  //우편번호 검색창
-  function post_check(){
-	   	window.open("zipcode_find.do","우편번호주소찾기",
-	    			"width=450,height=150");
-	    	//자바스크립트에서 window 객체의 open()메서드로 새로운 공지창을 만듬
-	    	//폭이 450,높이 150 인 새로운 공지창을 만듬.
-   }	
   
   /* 정보 수정 체크 */
   function edit_check(){	
@@ -99,16 +90,24 @@
   		$("#member_nickname").val("").focus();
   		return false;
   	}
-  	if($.trim($("#member_zip1").val())==""){
+  	if($('input:radio[name=member_gender]').is(':checked')==false){
+  		alert("성별을 입력하세요!");
+  		return false;
+  	}
+  	if($.trim($("#member_email").val())==""){
+  		alert("이메일을 입력하세요!");
+  		$("#member_email").val("").focus();
+  		return false;
+  	}
+  	if($.trim($("#member_zip").val())==""){
   		alert("우편번호를 입력하세요!");
-  		$("#member_zip1").val("").focus();
+  		$("#member_zip").val("").focus();
   		return false;
   	}
-  	if($.trim($("#member_zip2").val())==""){
-  		alert("우펀번호를 입력하세요!");
-  		$("#member_zip2").val("").focus();
-  		return false;
-  	}
+ /* if($("#member_gender").radioButtondelivery.setChecked(false)){
+		alert("성별을 입력하세요!");
+		return false;	
+	}*/
   	if($.trim($("#member_addr1").val())==""){
   		alert("주소를 입력하세요!");
   		$("#member_addr1").val("").focus();

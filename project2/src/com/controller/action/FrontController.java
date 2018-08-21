@@ -5,6 +5,7 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.net.URL;
 import java.util.Properties;
+import java.util.Scanner;
 import java.util.StringTokenizer;
 
 import javax.servlet.RequestDispatcher;
@@ -23,7 +24,10 @@ public class FrontController extends HttpServlet {
 		
 		Properties prop = new Properties();
 
-		FileInputStream fis = new FileInputStream("C:\\Users\\Administrator\\git\\Git_share_project\\project2\\src\\com\\controller\\action\\mapping.properties");
+		URL propUrl = getClass().getResource("mapping.properties");
+		String tempPath = propUrl.toString();
+		String path=tempPath.substring(6);
+		FileInputStream fis = new FileInputStream(path);
 		//프로퍼티 파일 로드, 자바경로구분은 \\ or /
 		prop.load(fis);
 		fis.close();

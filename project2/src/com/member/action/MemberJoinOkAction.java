@@ -28,8 +28,7 @@ public class MemberJoinOkAction implements Action {
 		String member_nickname= request.getParameter("member_nickname").trim();
 		String member_gender= request.getParameter("member_gender").trim();
 		String member_email= request.getParameter("member_email").trim();
-		String member_zip1=request.getParameter("member_zip1").trim();
-		String member_zip2=request.getParameter("member_zip2").trim();
+		String member_zip=request.getParameter("member_zip").trim();
 		String member_addr1=request.getParameter("member_addr1").trim();
 		String member_addr2=request.getParameter("member_addr2").trim();		   
 		   
@@ -45,8 +44,7 @@ public class MemberJoinOkAction implements Action {
 		     bean.setMember_nickname(member_nickname);
 		     bean.setMember_gender(member_gender);
 		     bean.setMember_email(member_email);
-		     bean.setMember_zip1(member_zip1);
-		     bean.setMember_zip2(member_zip2);
+		     bean.setMember_zip(member_zip);
 		     bean.setMember_addr1(member_addr1);
 		     bean.setMember_addr2(member_addr2);	         
 		    

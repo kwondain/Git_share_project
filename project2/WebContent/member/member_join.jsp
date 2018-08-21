@@ -4,6 +4,48 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>회원가입 폼</title>
+<script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
+<script>
+function execDaumPostcode(){
+    new daum.Postcode({
+        oncomplete: function(data) {
+            // 팝업에서 검색결과 항목을 클릭했을때 실행할 코드를 작성하는 부분입니다.
+           
+            //각 주소의 노출 규칙에 따라 주소를 조합한다.
+            //내려오는 변수가 값이 없는 경우엔 공백('')값을 가지므로, 이를 참고하여 분기한다.
+            var fullAddr = '';//최종 주소 변수
+            var extraAddr = '';//조합형 주소 변수
+            
+            //사용자가 선택한 주소타입에 따라 해당 주소값을 가져온다.
+            if(data.userSelectedType==='R'){//사용자가 도로명 주소를 선택
+            	fullAddr = data.roadAddress;
+            }else{//사용자가 지번 주소를 선택
+            	fullAddr = data.jibunAddress;
+            }
+            
+            //사용자가 선택한 주소가 도로명타입일 때 조합한다.
+            if(data.userSelectedType==="R"){
+            	//법정동명이 있을 경우 추가
+            	if(data.bname!==''){
+            		extraAddr += data.bname;
+            	}
+            	//건물명이 있을 경우 추가
+            	if(data.buildingName!==''){
+            		extraAddr += (extraAddr!==''?','+data.buildingName:data.buildingName);
+            	}
+            	//조합형 주소의 유무에 따라 양쪽에 괄호를 추가하여 최종 주소를 만든다.
+            	fullAddr += (extraAddr!==''?' ('+extraAddr+')': '')
+            }
+            //우편번호와 주소 정보를 해당 필드에 넣는다.
+            document.getElementById('member_zip').value=data.zonecode;//5자리 새 우편번호 사용
+            document.getElementById('member_addr1').value=fullAddr;
+            
+            //커서를 상세주소 필드로 이동한다.
+            document.getElementById('member_addr2').focus();
+        }
+    }).open();
+}
+</script>
 <style>
 	#logo{
 		margin-top :10px;
@@ -64,14 +106,17 @@
 		margin: 15px 0 0 0;
 	}
 </style>
-<link rel="stylesheet" type="text/css" href="./css/member.css">
 <!-- 제이쿼리 라이브러리 링크 -->
 <script src="./js/jquery-3.js"></script>
-<!-- 회원가입에 있어서 데이터를 검증하는 외부 자바스크립트 파일 링크  -->
-<script src="./js/member.js"></script> 
+<script src="./js/member.js"></script>
 <script>
-	$(function() { // 현재 문서가 브라우저로 로딩될 때 자동 호출되는 무명함수		
-		//아이디 검사 및 중복체크
+	$(function() { // 현재 문서가 브라우저로 로딩될 때 자동 호출되는 무명함수
+		$("#idcheck_btn").click(function(){
+			var userId = $("#member_id").val();
+			window.open("IdCheckAction.do?id="+userId,
+					"chkForm", "width=500, height=300, resizable = no, scrollbars = no");
+		});
+	/* 	//아이디 검사 및 중복체크
 		$("#idcheck_btn")
 				.mouseover(
 						function() { // 마우스 오버 시	   
@@ -106,7 +151,7 @@
 							};							
 							 // 다음 태그 수행 금지   
 						});
-		//아이디 중복 체크 끝
+		//아이디 중복 체크 끝 */
 
 		function validate_userid(userId) {
 			var pattern = new RegExp(/^[a-z][a-z0-9_]+$/);//영문소문자,숫자와_만 허용
@@ -121,8 +166,6 @@
 		<h1 class="join_title">회원가입</h1>
 		<div class="clear"></div>
 		<form name="f" method="post" action="member_Join_ok.do" onsubmit="return mem_check()">
-			<!-- enctype="multipart/form-data"은 이진파일(바이너리 모드)을 
-       업로드 할 경우 지정하는 속성이다. -->
 			<table id="join_t">
 				<tr>
 					<th class="first">회원아이디</th>
@@ -161,28 +204,17 @@
 				</tr>
 				<tr>
 					<th>우편번호</th>
-					<td><input name="member_zip1" id="member_zip1" size="3"
-						/>
-<!-- 						readonly onclick="post_search()" /> -->
-						-
-						<input name="member_zip2" id="member_zip2" size="3"
-						/>
-<!-- 						readonly onclick="post_search()" /> readonly 속성 : 텍스트상자에 데이터를 입력할 수 없고,
-                        단지 읽기 전용으로 지정할 경우 사용하는 속성 -->
-                        <input type="button" value="우편번호찾기" id="address" onclick="post_check()" />
-                        <label for="address"><img id="address_img" src="./images/address.gif"></label>
-                        </td>
-				</tr>
-				<tr>
-					<th>주소</th>
-					<td><input name="member_addr1" id="member_addr1" size="50"
-						/>
-<!-- 						readonly onclick="post_search()" /></td> -->
-				</tr>
-				<tr>
-					<th>나머지 주소</th>
-					<td><input name="member_addr2" id="member_addr2" size="40" />
+					<td><input type="text" name="member_zip" id="member_zip" maxlength="7" size="7">
+					<input type="button" onclick="execDaumPostcode()" value="우편번호 찾기"><br>
 					</td>
+				</tr>
+				<tr>
+					<th>주소1</th>
+					<td><input type="text" name="member_addr1" id="member_addr1" maxlength="80" size="80"></td>
+				</tr>
+				<tr>
+					<th>주소2</th>
+					<td><input type="text" name="member_addr2" id="member_addr2" maxlength="80" size="80"></td>
 				</tr>
 			</table>
 			<div id="join_menu">

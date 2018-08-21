@@ -37,10 +37,8 @@ public class MemberEditOkAction implements Action {
 			=request.getParameter("member_gender").trim();
 			String member_email 
 			=request.getParameter("member_email").trim();
-			String member_zip1 
-			=request.getParameter("member_zip1").trim();
-			String member_zip2 
-			=request.getParameter("member_zip2").trim();
+			String member_zip
+			=request.getParameter("member_zip").trim();
 			String member_addr1 
 			=request.getParameter("member_addr1").trim();
 			String member_addr2 
@@ -53,8 +51,7 @@ public class MemberEditOkAction implements Action {
 			bean.setMember_nickname(member_nickname);//nickname 저장
 			bean.setMember_gender(member_gender);//nickname 저장
 			bean.setMember_email(member_email);//nickname 저장
-			bean.setMember_zip1(member_zip1);//zip1저장
-			bean.setMember_zip2(member_zip2);//zip2저장
+			bean.setMember_zip(member_zip);//zip저장
 			bean.setMember_addr1(member_addr1);//addr1저장
 			bean.setMember_addr2(member_addr2);//addr2저장
 			
