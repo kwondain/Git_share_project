@@ -66,9 +66,9 @@
 </style>
 <link rel="stylesheet" type="text/css" href="./css/member.css">
 <!-- 제이쿼리 라이브러리 링크 -->
-<script src="../js/jquery-3.js"></script>
+<script src="./js/jquery-3.js"></script>
 <!-- 회원가입에 있어서 데이터를 검증하는 외부 자바스크립트 파일 링크  -->
-<script src="../js/member.js"></script> 
+<script src="./js/member.js"></script> 
 <script>
 	$(function() { // 현재 문서가 브라우저로 로딩될 때 자동 호출되는 무명함수		
 		//아이디 검사 및 중복체크
@@ -117,11 +117,10 @@
 </head>
 <body>
 	<div id="join_wrap">
-		<a href="#"><img id="logo" src="../images/lovingpet.png"></a>
+		<a href="#"><img id="logo" src="./images/lovingpet.png"></a>
 		<h1 class="join_title">회원가입</h1>
 		<div class="clear"></div>
-		<form name="f" method="post" action="member_Join_ok.do"
-			onsubmit="return mem_check()" enctype="multipart/form-data">
+		<form name="f" method="post" action="member_Join_ok.do" onsubmit="return mem_check()">
 			<!-- enctype="multipart/form-data"은 이진파일(바이너리 모드)을 
        업로드 할 경우 지정하는 속성이다. -->
 			<table id="join_t">
@@ -171,7 +170,7 @@
 <!-- 						readonly onclick="post_search()" /> readonly 속성 : 텍스트상자에 데이터를 입력할 수 없고,
                         단지 읽기 전용으로 지정할 경우 사용하는 속성 -->
                         <input type="button" value="우편번호찾기" id="address" onclick="post_check()" />
-                        <label for="address"><img id="address_img" src="../images/address.gif"></label>
+                        <label for="address"><img id="address_img" src="./images/address.gif"></label>
                         </td>
 				</tr>
 				<tr>
@@ -189,7 +188,7 @@
 			<div id="join_menu">
 				<center>
 				<input type="submit" id="submit" value="가입" /><input type="reset" value="취소" onclick="$('#member_id').focus();" />
-				<label for="submit"><img src="../images/join.gif"></label>
+				<label for="submit"><img src="./images/join.gif"></label>
 				</center>
 			</div>
 		</form>

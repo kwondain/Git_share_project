@@ -22,7 +22,7 @@
     }    
     /* 비번 찾기 */
     function pwd_find(){
-    	window.open("pwd_Find.do", "비번찾기", "width=300, height=300");
+    	window.open("pwd_Find.do", "비번찾기", "width=300, height=200");
     	// 자바스크립트에서 window.open("공지창경로/파일명","창이름", "크기속성")
     	// 메소드는 공지창을 만든다.
     }    
@@ -47,7 +47,7 @@
       <div id="login_menu">
         <input type="submit" value="로그인" />
         <input type="reset" value="메인"
-               onclick="location='./index.jsp'" />                              
+               onclick="location='main.do'" />                              
         <input type="button" value="회원가입" 
                onclick="location='member_Join.do'" />
         <input type="button" value="비번찾기"

@@ -11,7 +11,7 @@
 <!-- jQuery 자바스크립트 라이브러리 외부 파일을 읽어온다 -->
 </head>
 <body>
-<a href="./member_Join.do" onfocus="this.blur()">회원가입</a></li>
-<a href="./member_Login.do" onfocus="this.blur()">로그인</a></li>
+<a href="./member_Join.do" onfocus="this.blur()">회원가입</a>
+<a href="./member_Login.do" onfocus="this.blur()">로그인</a>
 </body>
 </html>

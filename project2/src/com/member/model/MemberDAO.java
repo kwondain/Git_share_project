@@ -83,9 +83,28 @@ public class MemberDAO {
 		return zipcodeList; // 리스트를 호출한 곳으로 리턴한다.
 	}
 	/* 비번 찾기 */
-/*	public MemberBean findpwd(String pwd_id, String pwd_name) {
-
-	}*/
+	public MemberBean findpwd(String pwd_id, String pwd_name) {
+		// 사용자의 id와 name으로 비번 조회 메서드
+		MemberBean member=null;
+		try{
+			sql="select member_pass from pet_Member "
+			 +  " where member_id=? and member_name=?";
+			pstmt=con.prepareStatement(sql);
+			pstmt.setString(1, pwd_id);
+			pstmt.setString(2, pwd_name);
+			rs = pstmt.executeQuery();
+			if(rs.next()){
+				member = new MemberBean(); // 빈 객체
+				// pass 값을 빈에 저장 
+				member.setMember_pass
+				   (rs.getString("member_pass"));				
+			}
+			rs.close(); pstmt.close(); con.close();
+		}catch(Exception e){
+			e.printStackTrace();
+		}
+		return member;// 빈 객체 리턴(사용자 비번저장)
+	}
 	/* 회원가입 정보 저장 메서드*/
 	public void insertMember(MemberBean bean) {
 		// TODO Auto-generated method stub
@@ -176,11 +195,62 @@ public class MemberDAO {
 	}
 	/* 회원 정보 수정 */
 	public int updateMember(MemberBean bean) {
-		return 0;
+		int re = -1; // 리턴 변수
+		try{
+			sql="update pet_Member set member_pass=?,"
+			   +" member_name=?,member_nickname=?,"
+			   +" member_gender=?,member_email=?, "
+			   + " member_zip1=?,member_zip2=?,"		
+			   + " member_addr1=?,member_addr2=?"
+			   + " where member_id=?";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1,bean.getMember_pass());
+			pstmt.setString(2,bean.getMember_name());
+			pstmt.setString(3,bean.getMember_nickname());
+			pstmt.setString(4,bean.getMember_gender());
+			pstmt.setString(5,bean.getMember_name());
+			pstmt.setString(6,bean.getMember_zip1());
+			pstmt.setString(7,bean.getMember_zip2());
+			pstmt.setString(8,bean.getMember_addr1());
+			pstmt.setString(9,bean.getMember_addr2());
+			pstmt.setString(10,bean.getMember_id());
+			re=pstmt.executeUpdate(); // update문 실행
+			// 성공적으로 update가 된 경우 1리턴
+			pstmt.close(); con.close();
+		}catch(Exception e){
+			e.printStackTrace();
+		}		
+		return re; // 쿼리문 실행결과 리턴
 	}
 	/* 회원 탈퇴 메서드*/
-	public int deleteMember(String id, String pass, String del_cont) {
-		return 0;
+	public int deleteMember(String id, String pass) {
+		int re = -1;
+		try{
+			// id 사용자 검색
+			sql="select member_pass from "
+				+ " pet_Member where member_id=?";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, id);
+			rs = pstmt.executeQuery(); //select문 실행
+			if(rs.next()){ // id가 있는 경우
+				// 비번을 비교한다.
+				if(rs.getString("member_pass").equals(pass)){
+					// 비번이 일치한 경우
+					sql=" delete from pet_Member "
+					 + " where member_id=? ";
+					pstmt=con.prepareStatement(sql);
+					pstmt.setString(1,id);
+					re = pstmt.executeUpdate(); //update실행
+					// 성공시 re=1
+				}else{ // 비번 틀린 경우
+					re = 0; 
+				}
+			}
+			rs.close(); pstmt.close();con.close();
+		}catch(Exception e){
+			e.printStackTrace();
+		}
+		return re;
 	}
 }
 
