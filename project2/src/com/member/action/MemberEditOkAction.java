@@ -57,10 +57,11 @@ public class MemberEditOkAction implements Action {
 			
 			// 빈 객체를 DAO로 넘겨서 DB 저장한다.
 			int re = dao.updateMember(bean);
+			System.out.print(re);
 			if(re==1){
 				out.println("<script>");
 				out.println("alert('수정에 성공하였습니다.')");
-				out.println("location='index.do'");
+				out.println("location='./main.jsp'");
 				out.println("</script>");
 			}else{ // 수정 실패 시
 				out.println("<script>");

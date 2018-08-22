@@ -1,6 +1,7 @@
 package com.member.action;
 
 import java.io.File;
+import java.io.PrintWriter;
 import java.util.Calendar;
 import java.util.Random;
 
@@ -48,12 +49,15 @@ public class MemberJoinOkAction implements Action {
 		     bean.setMember_addr1(member_addr1);
 		     bean.setMember_addr2(member_addr2);	         
 		    
-		     /* DAO 클래스의 메소드 호출 */
-		     dao.insertMember(bean); //저장메서드 호출		     
-		     
+		     /* DAO 클래스의 메소드 호출 */	     
+		     dao.insertMember(bean);
+
+
 		     /* View 페이지 포워딩 */
-			 forward.setRedirect(true); // 포워딩 경로 변경
-			 forward.setPath("./member_Login.do"); // view 페이지
-			 return forward; // 실제 view 페이지 이동			
-			}
-		}
+		    forward.setRedirect(true); // 포워딩 경로 변경
+		    forward.setPath("./member_Login.do"); // view 페이지
+		    return forward; // 실제 view 페이지 이동			
+
+		 }
+}
+		

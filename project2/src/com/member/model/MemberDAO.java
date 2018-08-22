@@ -3,9 +3,13 @@ package com.member.model;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.naming.Context;
+import javax.naming.InitialContext;
+import javax.sql.DataSource;
 
 import db.DBConnection;
 
@@ -26,6 +30,66 @@ public class MemberDAO {
 			e.printStackTrace();
 		}
 	}
+	
+	
+/*	Connection conn = null;
+	DataSource ds = null;
+	Statement stmt = null;
+	private Connection getConnection() {
+		try {
+			Context init = new InitialContext();
+			ds = (DataSource)init.lookup("java:comp/env/jdbc/OracleDB");		
+			conn = ds.getConnection();
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
+		return conn;
+	}*/
+	
+	
+	private static MemberDAO instance;
+	public static MemberDAO getInstance() {
+		if(instance==null) instance = new MemberDAO();
+		return instance;
+	}
+	
+/*	@Override
+	public MemberBean selectMember(String memberId) {
+        MemberBean member = new MemberBean();
+        try {
+        	  String sql = "select * from pet_Member where id=?";
+        	  pstmt = getConnection().prepareStatement(sql);
+        	  pstmt.setString(1, memberId);
+        	  rs = pstmt.executeQuery();
+        	  if(rs.next()){
+        		  int i=0;
+        		  member.setId(rs.getString(++i));
+        		  member.setPassword(rs.getString(++i));
+        		  member.setName(rs.getString(++i));
+        		  member.setBirth(rs.getDate(++i));
+        		  member.setZipno(rs.getString(++i));
+        		  member.setAddress1(rs.getString(++i));
+        		  member.setAddress2(rs.getString(++i));
+        		  member.setTel1(rs.getString(++i));
+        		  member.setTel2(rs.getString(++i));
+        		  member.setTel3(rs.getString(++i));
+        		  member.setEmail(rs.getString(++i));
+        		  member.setRegdate(rs.getDate(++i));
+        		  member.setUse_flag(rs.getString(++i).charAt(0));
+        	  }
+
+        }catch(Exception e) {
+        	e.printStackTrace();
+        }finally {
+        	close(conn, pstmt, rs);
+        }
+		return member;
+	}*/
+	
+	
+	
+
+
 	/* 디비 작업은 메소드 단위로 작성한다. */
 	/* 아이디 중복 체크 */
 	public int checkMemberId(String id){
@@ -76,7 +140,8 @@ public class MemberDAO {
 		return member;// 빈 객체 리턴(사용자 비번저장)
 	}
 	/* 회원가입 정보 저장 메서드*/
-	public void insertMember(MemberBean bean) {
+	public int insertMember(MemberBean bean) {
+		int result=0;
 		// TODO Auto-generated method stub
 		try{
 			sql="insert into pet_Member "
@@ -97,14 +162,11 @@ public class MemberDAO {
 			pstmt.setString(7,bean.getMember_zip());
 			pstmt.setString(8,bean.getMember_addr1());
 			pstmt.setString(9,bean.getMember_addr2());
-			System.out.print(pstmt);
-			pstmt.executeUpdate(); // insert문 실행
-			
-			
+			result=pstmt.executeUpdate(); // insert문 실행
 		}catch(Exception e){
 			e.printStackTrace();
 		}
-		
+		return result;
 	}
 	/* 회원 체크 메서드 */
 	public int userCheck(String id, String pass) {

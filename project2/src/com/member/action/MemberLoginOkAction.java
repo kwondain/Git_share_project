@@ -37,11 +37,13 @@ public class MemberLoginOkAction implements Action {
 			session.setAttribute("id",id);
 			session.setAttribute("name",name);
 			session.setAttribute("nickname",nickname);
+			
+			
 			// view page 포워딩
 			ActionForward forward = new ActionForward();
 			forward.setRedirect(true);// *.do로 이동
-			forward.setPath("./index.do");
-			return forward; // 실제 포워딩			
+			forward.setPath("./main.jsp");
+			return forward; // 실제 포워딩		
 		}else if(result==0){ // 비빈이 틀린 경우
 			out.println("<script>");
 			out.println("alert('비번이 일치하지 않음')");

@@ -13,7 +13,7 @@ member_id varchar(20) primary key
 );
 -- 테이블 구조
 select * from pet_Member;
-
+truncate table pet_Member;
 insert into pet_Member(member_id,member_pass,member_name,
 member_nickname,member_gender,member_email,member_zip,member_addr1,
 member_addr2)

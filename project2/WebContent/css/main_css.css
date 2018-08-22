@@ -1,0 +1,213 @@
+@charset "UTF-8";
+body {
+    margin: 0;
+    padding: 0;
+}
+
+#wrapper{
+	width:100%;
+	padding-left: 0px;
+	padding-right: 0p
+	margin: 0px;
+	
+}
+
+header .title{
+	float: left;
+	font-size: 25px;
+	padding-left: 10px;
+	width: 30%;
+
+}
+header .loginmenu{
+	float: right;
+	padding-top: 10px;
+    padding-right: 10px;
+	
+}
+
+#lf .loginmenu input[type="submit"]{
+	border: none;
+	background-color: #fff;
+	font-weight: bold;
+	font-size: 12px;
+	cursor: pointer;
+}
+
+
+#lf .loginmenu a{
+	font-size: 12px;
+	font-weight: bold;
+	color: black;
+	text-decoration: none;
+	padding-left: 5px;
+	cursor: pointer;
+} 
+
+.mainmenu{
+	position: relative;
+	z-index: 600;
+	top:16px;
+	background: rgba(0,0,0,0.8);
+	width: 100%;
+	clear: both;
+	padding: 0px 0;
+	margin: 0px;
+}
+.mainmenu ul{
+	width: 100%;
+	height: 60px;
+	padding: 0px;
+	border: 0px;
+}
+.mainmenu li{
+	list-style-type: none;
+	float: left;
+	width: 24.5%;
+	text-align: center;
+	text-size: auto;
+	padding: 0px;
+	border: 0px;
+}
+.mainmenu li a{
+	color: white;
+	text-decoration: none;
+	line-height: 60px;
+	display: block;
+	margin: 0px;
+	text-align: center;
+	
+}
+.mainmenu ul li:hover{
+	cursor: pointer;
+	background-color: black; 
+}
+
+.mainmenu li ul{
+	background: rgba(0,0,0,0.8);
+	display: none;
+	height: auto;
+	padding: 0px;
+	border: 0px;
+	margin: 0px;
+	position: absolute;
+	width: 24.5%;
+	z-index: 200;
+}
+.mainmenu li:hover ul{
+	display: block;
+}
+.mainmenu li li{
+	background: rgba(0,0,0,0.8);
+	display: block;
+	float: none;
+	margin: 0px;
+	padding: 0px;
+	width: 100%;
+}
+.mainmenu li li:hover{
+	background:white;
+}
+.mainmenu li li:hover a{
+	color: black;
+	font-weight: bold;
+}
+/* 여기까지가 윗부분 header 메뉴 틀입니다. 여기까지 복사하시면 됩니다. */
+.cycle-slideshow{
+	position: relative;
+	width: 100%;
+	hegiht: 800px;
+	z-index: 200;
+}
+.cycle-slideshow img{
+	width: 100%;
+	height: 800px;
+}
+
+#container{
+	position:relative;
+	width: 100%;
+	height: 800px;
+}
+.conimg{
+	position: absolute;
+	width: 75%;
+	height: 400px;
+}
+.conimg img{
+  width:inherit;
+  height:inherit;
+}
+.img1 {
+  top:0px;
+  left:0px;
+}
+
+.img2 {
+  top:0px;
+  left:50%;
+}
+
+.img3 {
+  top:400px;
+  left:0;
+}
+
+.img4 {
+  top:400px;
+  left:50%;
+}
+.darkness {
+  position:absolute;
+  top:0;
+  left:0;
+  width:inherit;
+  height:inherit;
+  background:#000000;
+  opacity:0;
+  transition:all .2s linear;
+}
+.darkness span{
+  color:#ffffff;
+  user-select:none;
+}
+.conimg:hover .darkness{
+  opacity:0.7;
+}
+
+/* 스크립트가 다운되지 않을 때 */
+.cycle-slideshow img:first-child{
+	position: static; z-index: 100;
+}
+.cycle-pager{
+	text-align: center;
+	width: 100%;
+	z-index: 500;
+	position: absolute;
+	bottom: 5px;
+	overflow: hidden;
+}
+.cycle-pager span{
+	font-family: arial;
+	font-size: 50px;
+	width: 16px;
+	hegiht: 16px;
+	padding: 0 5px 0 0;
+	display: inline-block;
+	color: #ddd;
+	cursor: pointer;
+}
+.cycle-pager span.cycle-pager-active{
+	color: #c8ffff;
+}
+.cycle-pager>*{
+	cursor: pointer;
+}
+
+
+footer div{
+	background-color: #D8D8D8;
+	width: 97%;
+	padding: 1.56%;
+	text-align: center;
+}
