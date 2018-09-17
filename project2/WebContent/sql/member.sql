@@ -20,4 +20,7 @@ member_addr2)
 values('hong','1234','홍길동','의적','남','lampshade26@naver.com','123',
 '서울시 강남구 테헤란로', 'IT정보기술원');
 
+update pet_Member set member_pass=1233, member_name='홍길동', member_nickname='의적', member_gender='여', member_email='lampshade26@naver.com',
+	member_zip=123, member_addr1='서울시 강남구 테헤란로', member_addr2='IT정보기술원' where member_id='hong';
+
 commit work;

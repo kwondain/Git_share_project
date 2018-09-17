@@ -53,15 +53,26 @@ function execDaumPostcode(){
 </script>
 </head>
 <body>
+<%
+   int nowpage = 
+      (Integer)request.getAttribute("page");
+%>
   <div id="join_wrap">
     <h2 class="join_title">회원정보 수정</h2>
-    <form name="f" method="post" action="member_edit_ok.do"
-    onsubmit="return edit_check()">
+    <form name="f2" method="post" 
+     action="admin_member_edit_ok.do?page=<%=nowpage %>"
+     onsubmit="return edit_check()"> 
        
    <table id="join_t">
+
       <tr>
          <th>회원아이디</th>
-         <td> ${member.member_id} </td>       
+         <td>     
+         		<input name="member_id" 
+                    id="member_id" size="14"
+                    value="${member.member_id}"
+                    readonly="readonly" />
+             <!-- 아이디는 읽기전용으로 지정 -->     </td>       
       </tr>     
       <tr>
          <th>비밀번호</th>
@@ -149,6 +160,7 @@ function execDaumPostcode(){
   </div>
 </body>
 </html>
+
 
 
 

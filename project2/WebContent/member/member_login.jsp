@@ -56,6 +56,8 @@
                onclick="location='member_Join.do'" />
         <input type="button" value="비번찾기"
                onclick="pwd_find()" />
+        <input type="button" value="관리자 로그인" 
+        	   onclick="location='admin_login.do'" />               
       </div>    
   </form>
   </div> 

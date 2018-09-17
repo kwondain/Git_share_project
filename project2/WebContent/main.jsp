@@ -35,7 +35,7 @@
 			<li><a href="#">펫 맡기기</a></li>
 			<li><a href="#">공지사항&#38;게시판</a>
 				<ul>
-					<li><a href="#">공지사항</a></li>
+					<li><a href="gongji_list.do">공지사항</a></li>
 					<li><a href="./board_list.do">자유게시판</a></li>
 				</ul></li>
 			<li><a href="#">내 페이지</a>
