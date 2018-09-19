@@ -175,7 +175,6 @@
 </script>
 <!-- 
 <script>
-
 	var protect = document.getElementById("protect");
 	function chk(){
 		if(protect.value() != imgNumber ){
@@ -278,4 +277,3 @@
     </div>  
 </body>
 </html>
-
