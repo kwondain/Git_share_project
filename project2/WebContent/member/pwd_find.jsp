@@ -2,161 +2,12 @@
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
+<link href="css/main_css.css?ver=1" rel="stylesheet" type="text/css">
 <head>
 <meta charset="UTF-8">
 <title>회원정보 찾기</title>
-<style>
-	body{
-		margin: 0px;
-	}
-    #wrap{
-        width: 600px;
-        margin: 0 auto;
-    }
-    #header{
-        margin:0px;
-        width:100%;
-        text-align: center;
-        background: #ddd;
-        height:auto;
-    }
-    #header h2{
-        margin :0;
-        padding: 10px; 
-    }
-    
-    .title{
-        width:100%;
-        padding-top: 20px;
-        margin-top:20px;
-        margin-bottom:20px;
-        text-align: center;
-    }
-    .top{
-        padding:10px 16%;
-        border: 1px solid #ddd;
-        border-spacing: 0px;
-        background:#ddd;
-        border-bottom: 1px solid #000;
-    }
-    p {
-        margin:0;
-        padding:0;
-        float: left;
-    }
-    .text{
-        width:100%;
-        margin-bottom: 10px;
-        height:75px;
-    }
-    .text1{
-        width:15%;
-        margin:0;
-        float:left;
-    }
-    .text2{
-        float:left;
-        width:80%;
-        font-size:13px;
-    }
-    .text1 img{
-        width:70px;
-    }
-    ul{
-        list-style-type: none;
-        padding:0;
-    }
-   
-    table{
-        width: 90%;
-        margin: 0 auto;
-        border-spacing: 0px;
-        border-bottom: 2px solid #bbb;
-        border-top: 2px solid #bbb;
-    }
-    th{
-        width: 30%;
-        background: #ccc;
-        text-align: left;
-        padding-left: 5%;
-        padding-top:10px;
-        padding-bottom:10px;
-        border-bottom: 1px solid #ddd;
-    }
-    td{
-        width: 70%;
-        padding-top:10px;
-        padding-bottom:10px;
-        border-bottom: 1px solid #ddd;
-    }
-    ul li input[type="text"]{
-        width: 80%;
-        margin-left: 15px;
-        height: 20px;
-    }
-    ul li input[type="date"]{
-        width: 80%;
-        margin-left: 15px;
-        height: 20px;
-    }
-	input[type="submit"]{
-		background: red;
-		color: white;
-		width: 30%;
-		height: 70%;
-		text-align: center;
-		margin-left: 38%;
-		margin-top: 3%;
-	}
-	.button{
-		width:100%;
-		height: 50px;
-		margin-bottom: 3%;
-	}
-	.main{
-		border: 1px solid #ccc;
-	}
-	.main p{
-		padding-left: 15px;
-		margin: 15px;
-	}
-	#password_check:checked~ .main ul li .password_finder{
-		display:block;
-	}
-	#password_check:checked~ .main ul li .id_finder{
-		display:none;
-	}
-	#id_check:checked~ .main ul li .password_finder{
-		display:none;
-	}
-	#id_check:checked~ .main ul li .id_finder{
-		display:block;
-	}
-	#id_check:checked~ .title #clon_id{
-		background: #fff;
-		color:black;
-		border-top:1px solid #000;
-		border-left:1px solid #000;
-		border-right:1px solid #000;
-		border-bottom: 1px solid #fff;
-	}
-	#password_check:checked~ .title #clon_pwd{
-		background: #fff;
-		color:black;
-		border-top:1px solid #000;
-		border-left:1px solid #000;
-		border-right:1px solid #000;
-		border-bottom: 1px solid #fff;
-	}
-	input[type="radio"]{
-		display:none;
-	}
-	td img{
-		padding-left: 20%;
-		width : 50%;
-		height: 70%;
-	}
-</style>
+<script src="./js/jquery-3.js"></script>
+
 <script>
 	var arr = ["TNKX9","4531FVHA","DLV4","D8T93","A2CBV"];
 	var random = Math.ceil(Math.random()*4);
@@ -175,6 +26,7 @@
 </script>
 <!-- 
 <script>
+
 	var protect = document.getElementById("protect");
 	function chk(){
 		if(protect.value() != imgNumber ){
@@ -186,8 +38,37 @@
 		return true;
 	}
 </script>     -->
-
+<link href="css/bootstrap.css " rel="stylesheet" type="text/css">
 </head>
+<div id=wrapper>
+		<header>
+		<div class="title">
+			<a href="./main.jsp"><img src="images/lovingpet.png"></a>
+		</div>
+		<div class="loginmenu">
+ 			<jsp:include page="/member/member_login.jsp" />
+		</div>
+		</header>
+		<nav class="mainmenu">
+		<ul>
+			<li><a href="#">펫시터 지원하기</a>
+				<ul>
+					<li><a href="#">펫시터란</a></li>
+					<li><a href="#">펫시터 지원하기</a></li>
+				</ul></li>
+			<li><a href="#">펫 맡기기</a></li>
+			<li><a href="#">공지사항&#38;게시판</a>
+				<ul>
+					<li><a href="#">공지사항</a></li>
+					<li><a href="./board_list.do">자유게시판</a></li>
+				</ul></li>
+			<li><a href="#">내 페이지</a>
+				<ul>
+					<li><a href="member_edit.do">회원정보 수정</a></li>
+					<li><a href="#">내가 찜한 펫시터 리스트</a></li>
+				</ul></li>
+		</ul>
+		</nav>
 <body>
     <div id="wrap">
         <div id="header">
@@ -196,7 +77,7 @@
         <section>
         <input type="radio" name="finder" id="id_check" class="id_check" checked>
         <input type="radio" name="finder" id="password_check" class="password_check">
-            <article class="title">
+            <article class="titleArticle">
                 <label for="id_check" class="top" id="clon_id">아이디 찾기</label><label for="password_check" class="top" id="clon_pwd">비밀번호 찾기</label>
             </article>
             <article>
@@ -219,18 +100,18 @@
                 <li>
                     <div class="id_finder">
                     <form action="id_finde.jsp">
-                        <table>
+                        <table class="table">
                             <tr>
                                 <th class="name">이름</th>
-                                <td><input type="text" name="id_name" id="id_name"></td>
+                                <td><input type="text" name="id_name" id="id_name"class="form-control"></td>
                             </tr>
                             <tr>
                                 <th>생년월일</th>
-                                <td><input type="date" name="id_birth" id="id_birth"></td>
+                                <td><input type="date" name="id_birth" id="id_birth"class="form-control"></td>
                             </tr>
                         </table>
-                        <div class="button">
-                        <input type="submit" value="아이디찾기">
+                        <div class="button"style="text-align: center;">
+                        <input type="submit" value="아이디찾기"class="btn">
                         </div>
                         </form>
                     </div>
@@ -238,22 +119,22 @@
                 <li>
                     <div class="password_finder">
                     <form method="post" action="password_find.jsp" name="pass" onsubmit="return chk()">
-                        <table>
+                        <table class="table">
                             <tr>
                                 <th class="id">아이디</th>
-                                <td><input type="text" name="password_id" id="password_id"></td>
+                                <td><input type="text" name="password_id" id="password_id"class="form-control"></td>
                             </tr>
                             <tr>
                                 <th>이름</th>
-                                <td><input type="text" name="password_name" id="password_name"></td>
+                                <td><input type="text" name="password_name" id="password_name"class="form-control"></td>
                             </tr>
                             <tr>
                                 <th>생년월일</th>
-                                <td><input type="date" name="password_birth" id="password_birth"></td>
+                                <td><input type="date" name="password_birth" id="password_birth"class="form-control"></td>
                             </tr>
                             <tr>
                                 <th>이메일주소</th>
-                                <td><input type="text" name="password_email" id="password_email"></td>
+                                <td><input type="text" name="password_email" id="password_email"class="form-control"></td>
                             </tr>
                             <tr>
                             	<th>방지문자 인증</th>
@@ -261,12 +142,12 @@
                             	<script>
                             	document.write("<img src=./images/"+imgNumber+".jpg>");
                             	</script>
-                            	<input type="text" id="protect" class="protect" name="protect"><p>이미지를 보이는 대로 입력해주세요.</p>
+                            	<input type="text" id="protect"  name="protect" class="form-control"><p>이미지를 보이는 대로 입력해주세요.</p>
                             	</td>
                             </tr>
                         </table>
-                        <div class="button">
-                        <input type="submit" value="비밀번호찾기">
+                        <div class="button"style="text-align: center;">
+                        <input type="submit" value="비밀번호찾기"class="btn">
                         </div>
                         </form>
                     </div>
@@ -274,6 +155,8 @@
             </ul>
             </div>
         </section>
-    </div>  
+    </div>
+<link rel="stylesheet" type="text/css" href="./css/member_find.css">  
 </body>
 </html>
+

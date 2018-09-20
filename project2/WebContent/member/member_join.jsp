@@ -148,6 +148,7 @@ function execDaumPostcode(){
 							 // 다음 태그 수행 금지   
 						});
 		//아이디 중복 체크 끝 */
+
 		function validate_userid(userId) {
 			var pattern = new RegExp(/^[a-z][a-z0-9_]+$/);//영문소문자,숫자와_만 허용
 			return pattern.test(userId);
@@ -221,3 +222,10 @@ function execDaumPostcode(){
 	</div>
 </body>
 </html>
+
+
+
+
+
+
+

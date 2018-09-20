@@ -3,9 +3,11 @@
 <%@ page contentType="text/html; charset=UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
+<link href="css/main_css.css?ver=1" rel="stylesheet" type="text/css">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>로그인 폼</title>
+<title>로그인</title>
+<link href="css/bootstrap.css " rel="stylesheet" type="text/css">
 <script src="./js/jquery-3.js"></script>
 <script>
     function check(){  // 아이디와 비번 체크 함수
@@ -22,12 +24,13 @@
     }    
     /* 비번 찾기 */
     function pwd_find(){
-    	window.open("pwd_Find.do", "비번찾기");
+    	window.open("pwd_Find.do", "비밀번호찾기");
     	// 자바스크립트에서 window.open("공지창경로/파일명","창이름", "크기속성")
     	// 메소드는 공지창을 만든다.
     }    
 </script>
 </head>
+<body>
 <%
 	String path = request.getContextPath();
 	request.setAttribute("path",path);
@@ -40,24 +43,22 @@
     <table id="login_t2">
       <tr>
         <th> 아이디</th>
-        <td> <input name="id" id="id" class="login_box"> </td>
+        <td> <input name="id" id="id" class="form-control"> </td>
       </tr>  
       <tr>
         <th> 비밀번호</th>
         <td> <input type="password" name="pass"
-               id="pass" class="login_box"> </td>
+               id="pass" class="form-control"> </td>
       </tr>
     </table>
       <div id="login_menu">
-        <input type="submit" value="로그인" />
+        <input type="submit" value="로그인" class="btn"/>
 <!--         <input type="reset" value="메인"
                onclick="location='main.do'" />    -->                           
         <input type="button" value="회원가입" 
-               onclick="location='member_Join.do'" />
+               onclick="location='member_Join.do'" class="btn" />
         <input type="button" value="비번찾기"
-               onclick="pwd_find()" />
-        <input type="button" value="관리자 로그인" 
-        	   onclick="location='admin_login.do'" />               
+               onclick="pwd_find()" class="btn"/>
       </div>    
   </form>
   </div> 
