@@ -3,6 +3,7 @@
 <!-- member_del.jsp -->
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
+<link href="css/main_css.css?ver=1" rel="stylesheet" type="text/css">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>회원탈퇴</title>
@@ -18,13 +19,43 @@
 	   }
    }
 </script>
+<link href="css/bootstrap.css " rel="stylesheet" type="text/css">
 </head>
 <body>
-  <div id="del_wrap">
+<div id=wrapper>
+		<header>
+		<div class="title">
+			<a href="./main.jsp"><img src="images/lovingpet.png"></a>
+		</div>
+		<div class="loginmenu">
+ 			<jsp:include page="/member/member_login.jsp" />
+		</div>
+		</header>
+		<nav class="mainmenu">
+		<ul>
+			<li><a href="#">펫시터 지원하기</a>
+				<ul>
+					<li><a href="#">펫시터란</a></li>
+					<li><a href="#">펫시터 지원하기</a></li>
+				</ul></li>
+			<li><a href="#">펫 맡기기</a></li>
+			<li><a href="#">공지사항&#38;게시판</a>
+				<ul>
+					<li><a href="#">공지사항</a></li>
+					<li><a href="./board_list.do">자유게시판</a></li>
+				</ul></li>
+			<li><a href="#">내 페이지</a>
+				<ul>
+					<li><a href="member_edit.do">회원정보 수정</a></li>
+					<li><a href="#">내가 찜한 펫시터 리스트</a></li>
+				</ul></li>
+		</ul>
+		</nav>
+  <div id="del_wrap" style="text-align: center;width: 25%;margin-left: auto;margin-right: auto;">
     <h2 class="del_title">회원탈퇴</h2>
     <form method="post" action="member_del_ok.do"
           onsubmit="return check()">
-     <table id="del_t">
+     <table id="del_t" class="table">
         <tr> 
            <th> 아이디 </th>
            <td> ${id} </td>
@@ -38,15 +69,16 @@
         <tr> 
            <th> 비밀번호 </th>
            <td> 
-            <input type="password" name="pwd" id="pwd"/>
+            <input type="password" name="pwd" id="pwd" class="form-control"/>
            </td>           
         </tr>
      </table>
      <div id="del_menu">
-       <input type="submit" value="탈퇴"/>
-       <input type="reset" value="취소"/>
+       <input type="submit" value="탈퇴" class="btn"/>
+       <input type="reset" value="취소" class="btn"/>
      </div>     
     </form>
   </div>
 </body>
 </html>
+
