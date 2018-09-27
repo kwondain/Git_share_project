@@ -1,10 +1,12 @@
 <%@ page contentType="text/html; charset=UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
+<link href="css/main_css.css?ver=1" rel="stylesheet" type="text/css">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>회원가입 폼</title>
+<title>펫시터 매칭 서비스, Loving Pet</title>
 <script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
+<link href="css/bootstrap.css " rel="stylesheet" type="text/css">
 <script>
 function execDaumPostcode(){
     new daum.Postcode({
@@ -90,12 +92,6 @@ function execDaumPostcode(){
 	#join_menu{
 		height: 50px;
 	}
-	input[type=submit]{
-		display:none;
-	}
-	input[type=reset]{
-		display:none;
-	}
 	#address{
 		display:none;
 	}
@@ -152,7 +148,6 @@ function execDaumPostcode(){
 							 // 다음 태그 수행 금지   
 						});
 		//아이디 중복 체크 끝 */
-
 		function validate_userid(userId) {
 			var pattern = new RegExp(/^[a-z][a-z0-9_]+$/);//영문소문자,숫자와_만 허용
 			return pattern.test(userId);
@@ -162,34 +157,34 @@ function execDaumPostcode(){
 </head>
 <body>
 	<div id="join_wrap">
-		<a href="#"><img id="logo" src="./images/lovingpet.png"></a>
+		<a href="./main.jsp"><img id="logo" src="./images/lovingpet.png"></a>
 		<h1 class="join_title">회원가입</h1>
 		<div class="clear"></div>
 		<form name="f" method="post" action="member_Join_ok.do" onsubmit="return mem_check()">
-			<table id="join_t">
+			<table id="join_t" class="table table-hover">
 				<tr>
-					<th class="first">회원아이디</th>
-					<td class="first"><input name="member_id" id="member_id" size="14" />
-						<input type="button" value="아이디중복체크" id="idcheck_btn" /> <br> <!-- 경고문이 출력되는 위치  -->
+					<th class="first">아이디</th>
+					<td class="first"><input name="member_id" id="member_id" size="14"  class="form-control"/>
+						<input type="button" value="아이디중복체크" id="idcheck_btn"  class="form-control"/> <br> <!-- 경고문이 출력되는 위치  -->
 						<span id="idcheck"> </span></td>
 				</tr>
 				<tr>
 					<th>비밀번호</th>
 					<td><input type="password" name="member_pass" id="member_pass"
-						size="14" /></td>
+						size="14"  class="form-control"/></td>
 				</tr>
 				<tr>
 					<th>비밀번호 확인</th>
 					<td><input type="password" name="member_pass2"
-						id="member_pass2" size="14" /></td>
+						id="member_pass2" size="14"  class="form-control"/></td>
 				</tr>
 				<tr>
 					<th>회원이름</th>
-					<td><input name="member_name" id="member_name" size="14" /></td>
+					<td><input name="member_name" id="member_name" size="14"  class="form-control"/></td>
 				</tr>
 				<tr>
 					<th>닉네임</th>
-					<td><input name="member_nickname" id="member_nickname" size="20" /></td>
+					<td><input name="member_nickname" id="member_nickname" size="20"  class="form-control"/></td>
 				</tr>
 				<tr>
 					<th>성별</th>
@@ -200,37 +195,29 @@ function execDaumPostcode(){
 				</tr>
 				<tr>
 					<th>이메일</th>
-					<td><input name="member_email" id="member_email" size="20" /></td>
+					<td><input name="member_email" id="member_email" size="20"  class="form-control"/></td>
 				</tr>
 				<tr>
 					<th>우편번호</th>
-					<td><input type="text" name="member_zip" id="member_zip" maxlength="7" size="7">
-					<input type="button" onclick="execDaumPostcode()" value="우편번호 찾기"><br>
+					<td><input type="text" name="member_zip" id="member_zip" maxlength="7" size="7" class="form-control">
+					<input type="button" onclick="execDaumPostcode()" value="우편번호 찾기" class="form-control"><br>
 					</td>
 				</tr>
 				<tr>
 					<th>주소1</th>
-					<td><input type="text" name="member_addr1" id="member_addr1" maxlength="80" size="80"></td>
+					<td><input type="text" name="member_addr1" id="member_addr1" maxlength="80" size="80" class="form-control"></td>
 				</tr>
 				<tr>
 					<th>주소2</th>
-					<td><input type="text" name="member_addr2" id="member_addr2" maxlength="80" size="80"></td>
+					<td><input type="text" name="member_addr2" id="member_addr2" maxlength="80" size="80" class="form-control"></td>
 				</tr>
 			</table>
 			<div id="join_menu">
 				<center>
-				<input type="submit" id="submit" value="가입" /><input type="reset" value="취소" onclick="$('#member_id').focus();" />
-				<label for="submit"><img src="./images/join.gif"></label>
+				<input type="submit" id="submit" value="가입" class="btn"/><input type="reset" value="취소" onclick="$('#member_id').focus();" class="btn" style="margin-left: 3px"/>
 				</center>
 			</div>
 		</form>
 	</div>
 </body>
 </html>
-
-
-
-
-
-
-

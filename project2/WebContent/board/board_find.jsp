@@ -1,93 +1,134 @@
 ﻿<%@ page contentType="text/html; charset=UTF-8"%>
-<%@ page import="com.board.model.*" %>
+<%@ page import="com.board.model.*"%>
 <!-- dao 패키지의 모든 클래스를 사용하기 위해서 임포트 시킴 -->
-<%@ page import="java.util.*" %>
+<%@ page import="java.util.*"%>
+<link href="css/main_css.css?ver=1" rel="stylesheet" type="text/css">
 <!--  컬렉션 클래스를 사용하기 위해서 임포트 시킴 -->
 <!--  ../ 한 단계 상위 폴더로 이동, 외부 포함 파일을 읽어오는 jsp 형식  -->
-
-<div class="clear">
-<h3>검색결과</h3>
-<hr>
-</div>
-
- <div id="article">
-  
-  <div id="article_c">
-    <%
-    List<BoardBean> boardList = 
-         (List<BoardBean>)request.getAttribute("LIST");
-  // 게시판의 목록을 가져온다.
-  // getBoardList()메소드는 BoardDAO 클래스에 목록을 가져올 수
-  // 있는 내용을 메소드를 작성한다.
-%>
- <div id="board_wrap">  
-  <table id="board_t">
-     <tr>
-        <td colspan="5" align="center">  
-            &nbsp;
-        </td>
-     </tr>
-     <tr>
-        <th> 글번호 </th> <th> 제목 </th>
-        <th> 글쓴이 </th> <th> 등록날짜 </th>
-        <th> 조회수 </th>
-     </tr>
-     <%
-        if((boardList != null) && (boardList.size()>0 )){
-        	// 게시판의 목록이 1개 이상 존재하는 경우 조건은 참이 된다.
-        	for(int i=0; i<boardList.size(); i++){
-        		BoardBean board = boardList.get(i);
-        		// 컬렉션 요소값을 BoardBean 타입으로 가져온다.
-     %>
-        <tr>
-           <!-- 게시판 번호 표시 -->
-           <td> <%=board.getBoard_no() %></td>
-           <td>
-               <a href="board_cont.do?no=<%=board.getBoard_no()%>"
-                 onfocus="this.blur()"> 
-               <%=board.getBoard_title()%></a></td>
-           <td> <%=board.getBoard_name() %></td>
-           <td> <%=board.getBoard_regdate().substring(0,10)%></td>
-           <td align="center"> <%=board.getBoard_hit() %></td>
-          </tr>
-          <%
-        	} // for end
-          }else{
-          %>
-            <tr>
-               <td colspan="5"> 게시물 목록이 없습니다.</td>
-            </tr>
-          <% } %>
-      </table>
-  		<input type="button" value="글쓰기" 
-            onclick="location='board_write.do'" 
-            class="board_b"/>
-       <!-- [글쓰기] 버튼을 클릭하면 board_write.jsp 파일로 이동된다. -->     
-       <script>
-         function find_check(){
-        	 if($.trim($("#find_name").val())==""){
-        		 alert("검색어를 입력하세요.");
-        		 $("#find_name").val("").focus();
-        		 return false;
-        	 }
-         }
-       </script>
-       <div id="board_find">
-         <form method="get" action="board_find_ok.do"
-               onsubmit="return find_check()">
-            <select name="find_field">
-              <option value="board_title">제목</option>
-              <option value="board_cont">내용</option>
-            </select>
-            <input name="find_name" id="find_name"
-                   size="14"/>
-            <input type="submit" value="검색" />
-            <input type="button" value="목록" 
-                   onclick="location='board_list.do'"/>       
-         </form>
-       </div>     
-    </div> 
-  </div>
-</div>
-
-<div class="clear"></div>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>펫시터 매칭 서비스, Loving Pet</title>
+<link href="css/bootstrap.css" rel="stylesheet" type="text/css">
+<style type="text/css">
+</style>
+</head>
+<body>
+	<div id=wrapper>
+		<header>
+			<div class="title">
+				<a href="./main.jsp"><img src="images/lovingpet.png"></a>
+			</div>
+			<div class="loginmenu">
+				<jsp:include page="/member/member_login.jsp" />
+			</div>
+		</header>
+	</div>
+		<nav class="mainmenu">
+			<ul>
+				<li><a href="#">펫시터 지원하기</a>
+					<ul>
+						<li><a href="#">펫시터란</a></li>
+						<li><a href="#">펫시터 지원하기</a></li>
+					</ul></li>
+				<li><a href="#">펫 맡기기</a></li>
+				<li><a href="#">공지사항&#38;게시판</a>
+					<ul>
+						<li><a href="#">공지사항</a></li>
+						<li><a href="./board_list.do">자유게시판</a></li>
+					</ul></li>
+				<li><a href="#">내 페이지</a>
+					<ul>
+						<li><a href="member_edit.do">회원정보 수정</a></li>
+						<li><a href="#">내가 찜한 펫시터 리스트</a></li>
+					</ul></li>
+			</ul>
+		</nav>
+		<hr>
+	<div id="article" style="text-align: center;">
+		<h1>검색결과</h1>
+		<div id="article_c">
+			<%
+				List<BoardBean> boardList = (List<BoardBean>) request.getAttribute("LIST");
+				// 게시판의 목록을 가져온다.
+				// getBoardList()메소드는 BoardDAO 클래스에 목록을 가져올 수
+				// 있는 내용을 메소드를 작성한다.
+			%>
+			<div id="board_wrap">
+			<div style="margin-left: 55%">전체글(<%=boardList.size() %>)</div>
+				<table id="board_t" class="table table-hover"
+					style="text-align: center; width: 60%; margin-left: auto; margin-right: auto;">
+					<tr style="background-color: transparent;">
+						<th width="10%" style="text-align: center;">글번호</th>
+						<th width="50%" style="text-align: center;">제목</th>
+						<th width="10%" style="text-align: center;">글쓴이</th>
+						<th width="20%" style="text-align: center;">등록날짜</th>
+						<th width="10%" style="text-align: center;">조회수</th>
+					</tr>
+					<%
+						if ((boardList != null) && (boardList.size() > 0)) {
+							// 게시판의 목록이 1개 이상 존재하는 경우 조건은 참이 된다.
+							for (int i = 0; i < boardList.size(); i++) {
+								BoardBean board = boardList.get(i);
+								// 컬렉션 요소값을 BoardBean 타입으로 가져온다.
+					%>
+					<tr>
+						<!-- 게시판 번호 표시 -->
+						<td><%=board.getBoard_no()%></td>
+						<td><a href="board_cont.do?no=<%=board.getBoard_no()%>"
+							onfocus="this.blur()"> <%=board.getBoard_title()%></a></td>
+						<td><%=board.getBoard_name()%></td>
+						<td><%=board.getBoard_regdate().substring(0, 10)%></td>
+						<td align="center"><%=board.getBoard_hit()%></td>
+					</tr>
+					<%
+						} // for end
+						} else {
+					%>
+					<tr>
+						<td colspan="5">게시물 목록이 없습니다.</td>
+					</tr>
+					<%
+						}
+					%>
+					<td><div style="text-align: left;">
+							<input type="button" value="글쓰기"
+								onclick="location='board_write.do'" class="btn" />
+						</div></td>
+				</table>
+				<!-- [글쓰기] 버튼을 클릭하면 board_write.jsp 파일로 이동된다. -->
+				<script>
+					function find_check() {
+						if ($.trim($("#find_name").val()) == "") {
+							alert("검색어를 입력하세요.");
+							$("#find_name").val("").focus();
+							return false;
+						}
+					}
+				</script>
+				<div id="board_find">
+					<form method="get" action="board_find_ok.do"
+						onsubmit="return find_check()">
+						<table style="margin-left: auto;margin-right: auto;">
+							<tr>
+								<td><select name="find_field" class="form-control">
+										<option value="board_title">제목</option>
+										<option value="board_cont">내용</option>
+								</select></td>
+								<td><input name="find_name" id="find_name" size="14"
+									class="form-control" /></td>
+								<td><input type="submit" value="검색" class="btn" /></td>
+							</tr>
+						</table>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+		<footer style=" position:absolute;bottom:0;width:100%;height:70px;">
+			<div>
+				<p>Copyright @ 2018 2조 프로젝트 All rights reserved. Code Is Content
+					by 2조 License Powered by Choongang</p>
+				<p>2조: 권다인, 신성수, 유원모, 이한유, 김경범</p>
+			</div>
+		</footer>
