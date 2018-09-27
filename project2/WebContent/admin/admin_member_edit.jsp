@@ -1,6 +1,7 @@
 <%@ page contentType="text/html; charset=UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
+    <link href="css/main_css.css?ver=1" rel="stylesheet" type="text/css">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>회원정보 수정</title>
@@ -51,19 +52,45 @@ function execDaumPostcode(){
     }).open();
 }
 </script>
+<link href="css/bootstrap.css" rel="stylesheet" type="text/css">
 </head>
 <body>
+<header>
+			<div class="title">
+				<a href="./main.jsp"><img src="images/lovingpet.png"></a>
+			</div>
+		</header>
+		<nav class="mainmenu">
+			<ul>
+				<li><a href="#">펫시터 지원하기</a>
+					<ul>
+						<li><a href="#">펫시터란</a></li>
+						<li><a href="#">펫시터 지원하기</a></li>
+					</ul></li>
+				<li><a href="#">펫 맡기기</a></li>
+				<li><a href="#">공지사항&#38;게시판</a>
+					<ul>
+						<li><a href="#">공지사항</a></li>
+						<li><a href="./board_list.do">자유게시판</a></li>
+					</ul></li>
+				<li><a href="#">내 페이지</a>
+					<ul>
+						<li><a href="member_edit.do">회원정보 수정</a></li>
+						<li><a href="#">내가 찜한 펫시터 리스트</a></li>
+					</ul></li>
+			</ul>
+		</nav>
 <%
    int nowpage = 
       (Integer)request.getAttribute("page");
 %>
   <div id="join_wrap">
-    <h2 class="join_title">회원정보 수정</h2>
+    <h2 class="join_title" style="text-align: center;">회원정보 수정</h2>
     <form name="f2" method="post" 
      action="admin_member_edit_ok.do?page=<%=nowpage %>"
      onsubmit="return edit_check()"> 
        
-   <table id="join_t">
+   <table id="join_t" class="table table-hover"style="width: 60%;margin-left: auto;margin-right: auto;">
 
       <tr>
          <th>회원아이디</th>
@@ -71,34 +98,34 @@ function execDaumPostcode(){
          		<input name="member_id" 
                     id="member_id" size="14"
                     value="${member.member_id}"
-                    readonly="readonly" />
+                    readonly="readonly"  class="form-control"/>
              <!-- 아이디는 읽기전용으로 지정 -->     </td>       
       </tr>     
       <tr>
          <th>비밀번호</th>
          <td> 
            <input type="password" name="member_pass" 
-                id="member_pass" size="14" />
+                id="member_pass" size="14"  class="form-control"/>
           </td>
       </tr>            
       <tr>
          <th>비밀번호 확인</th>
          <td> 
            <input type="password" name="member_pass2" 
-                id="member_pass2" size="14" />
+                id="member_pass2" size="14" class="form-control" />
           </td>
       </tr>
       <tr>
          <th>회원이름</th>
          <td> 
            <input name="member_name" id="member_name" size="14"
-            value="${member.member_name}"/> </td>
+            value="${member.member_name}" class="form-control"/> </td>
       </tr>
       <tr>
          <th>닉네임</th>
          <td> 
          <input name="member_nickname" id="member_nickname" 
-                size="14" value="${member.member_nickname}"/>  
+                size="14" value="${member.member_nickname}" class="form-control"/>  
          </td>
       </tr>
       <tr>
@@ -113,7 +140,7 @@ function execDaumPostcode(){
          <th>이메일</th>
          <td> 
          <input name="member_email" id="member_email" 
-                size="20" value="${member.member_email}"/>  
+                size="20" value="${member.member_email}" class="form-control"/>  
          </td>
       </tr>
       <tr>
@@ -121,7 +148,7 @@ function execDaumPostcode(){
          <td> 
            <input name="member_zip" id="member_zip" size="5"
            	value="${member.member_zip}"
-           />
+            class="form-control"/>
 <!--               readonly onclick="post_search()"/> -->
          
         
@@ -129,7 +156,7 @@ function execDaumPostcode(){
           <!-- readonly 속성 : 텍스트상자에 데이터를 입력할 수 없고,
                         단지 읽기 전용으로 지정할 경우 사용하는 속성 -->
             <input type="button" value="우편번호찾기" onclick="execDaumPostcode()"
-            />
+            	 class="form-control" />
 <!--                    onclick="post_check()"/>      -->                                                           
          </td>
       </tr>
@@ -138,7 +165,7 @@ function execDaumPostcode(){
          <td> 
            <input name="member_addr1" id="member_addr1" size="50"
            value = "${member.member_addr1}"
-           />
+            class="form-control"/>
 <!--            readonly onclick="post_search()"/> -->
           </td>
       </tr>
@@ -147,23 +174,23 @@ function execDaumPostcode(){
          <td> 
            <input name="member_addr2" id="member_addr2"
            value = "${member.member_addr2}"
-            size="40"/>
+            size="40" class="form-control"/>
           </td>
       </tr>      
    </table> 
-   <div id="join_menu">
-      <input type="submit" value="수정"/>
-      <input type="reset" value="취소"
+   <div id="join_menu" style="text-align: center;">
+      <input type="submit" value="수정"class="btn"/>
+      <input type="reset" value="취소"class="btn"
               onclick="$('#member_id').focus();"/>   
    </div>          
    </form>   
   </div>
 </body>
+<footer style=" bottom:0;width:105%;height:70px;">
+			<div>
+				<p>Copyright @ 2018 2조 프로젝트 All rights reserved. Code Is Content
+					by 2조 License Powered by Choongang</p>
+				<p>2조: 권다인, 신성수, 유원모, 이한유, 김경범</p>
+			</div>
+		</footer>
 </html>
-
-
-
-
-
-
-
