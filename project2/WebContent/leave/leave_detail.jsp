@@ -126,13 +126,33 @@
 	th,td{
 		border-top: 1px solid #ccc;
 	}
+	.Reservation{
+		border:none;
+		background:#48CAE1;
+		padding: 15px 60px;
+		border-radius: 5px;
+		font-size: 20px;
+		font-weight: bold;
+		color: white;
+		margin: 5px 0px;
+	}
 </style>
 <script type="text/javascript">
 	function mul(){
-		document.getElementById("number") - 1;
+		if(document.getElementById("number").value != 0){
+			document.getElementById("number").value--;
+			document.getElementById("add2").value = document.getElementById("number").value * 25000;
+			document.getElementById("add2").innerHTML = document.getElementById("add2").value;
+			document.getElementById("price").innerHTML = document.getElementById("add2").value + 33000;
+		}
 	}
 	function add(){
-		document.getElementById("number") + 1;
+		if(document.getElementById("number").value != 5){
+			document.getElementById("number").value++;
+			document.getElementById("add2").value = document.getElementById("number").value * 25000;
+			document.getElementById("add2").innerHTML = document.getElementById("add2").value;
+			document.getElementById("price").innerHTML = document.getElementById("add2").value + 33000;
+		}
 	}
 </script>
 </head>
@@ -183,19 +203,19 @@
 				<p class="add">반려견 추가 당 <span class="add_price">25,000원</span></p>
 				<table >
 					<tr>
-					<th>1박</th><td>30,000원</td>
+					<th>1박</th><td><span id="add3">30000</span>원</td>
 					</tr>
 					<tr>
-					<th>반려견 추가<input type="button" value="-" onclick="mul()"><input type="number" min="0" max="5" id="number" value="0" readonly="readonly"><input type="button" value="+" onclick="add()"></th><td>0원</td>
+					<th>반려견 추가<input type="button" value="-" onclick="mul()"><input type="number" min="0" max="5" id="number" value="0" readonly="readonly"><input type="button" value="+" onclick="add()"></th><td><span id="add2">0</span>원</td>
 					</tr>
 					<tr>
-					<th>부가세</th><td>3,000원</td>
+					<th>부가세</th><td><span id="add1">3000원</span></td>
 					</tr>
 					<tr>
-					<th>총 합계</th><td></td>
+					<th>총 합계</th><td><span id="price">33000</span>원</td>
 					</tr>
 				</table>
-				<input type="button" value="예약요청하기"><br>
+				<input type="button" class="Reservation" value="예약요청하기"><br>
 					<c:if test="${detail.leave_id == id }">
 						<input type="button" onclick="location='leave_delete.do?leave_id=${detail.leave_id}'" value="삭제하기">
 						<input type="button" onclick="location='leave_edit.do?leave_id=${detail.leave_id}'" value="수정하기">
