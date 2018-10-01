@@ -205,6 +205,19 @@
 		border: 2px solid #FFBB00;
 		cursor: pointer;
 	}
+	table th{
+		text-align: left;
+		padding-right: 20px;
+	}
+	table td{
+		font-weight: bold;
+		font-size: 20px;
+	}
+	.black{
+		font-weight: bold;
+		font-size: 20px;
+		margin-bottom: 10px;
+	}
 </style>
 </head>
 <body>
@@ -368,10 +381,19 @@
 						</c:forEach>
 					</ul>
 					<div class="clear"></div>
-					<p>주소: ${list.leave_address}</p>
-					<P>희망하는 동물 크기 : ${list.leave_size}</P>
-					<p>희망하는 반려동물 나이 : ${list.leave_age } </p>
-					<p>펫시터 전화번호: ${list.leave_tel}</p>
+					<br>
+					<table>
+						<tr>
+							<th>펫시터 이름:</th><td><span class="black">${list.leave_name}</span></td>
+						</tr>
+						<tr>
+							<th>주소:</th><td> <span class="address">${list.leave_address}</span></td>
+						</tr>
+						<tr>	
+							<th>펫시터 전화번호:</th><td><span class="tel">${list.leave_tel}</span></td>
+						</tr>
+					</table>
+					<p>펫시터는 반려동물이 <span class="black">${list.leave_size}</span>, <span class="black">${list.leave_age }</span>이길 원합니다.</p>
 					<p align="right">day care/<b class="big">20,000</b> 1박/<b class="big">30,000</b></p>
 				</div>
 			</div>

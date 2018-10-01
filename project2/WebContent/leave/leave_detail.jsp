@@ -58,18 +58,20 @@
 	}
 	.explain3{
 		margin: 10px auto;
-		float:right;
+		float: right;
 		width: 40%;
 		border: 1px solid #ccc;
 		border-radius: 5px;
 	}
 	.explain3_1{
 		width:50%;
-		float:left;
-	}
-	.explain3_1{
-		width:50%;
 		float:right;
+		text-align: center;
+	}
+	.explain3_2{
+		width:50%;
+		float: left;
+		text-align: center;
 	}
 	.explain4{
 		float: left;
@@ -112,7 +114,7 @@
 	table{
 		width:100%;
 		border-bottom: 1px solid #ccc;
-	}
+	}	
 	tr{
 		border-top: 1px solid #ccc;
 		border-bottom: 1px solid #ccc;
@@ -135,6 +137,59 @@
 		font-weight: bold;
 		color: white;
 		margin: 5px 0px;
+	}
+	.black{
+		font-weight: bold;
+		font-size: 20px;
+	}
+	.option{
+		font-weight: bold;
+		color:#48CAE1;
+	}
+	.explain2_1{
+		width:90%;
+		margin:0 auto;
+	}
+	.clear{
+		clear:both;
+	}
+	.black1{
+		font-weight: bold;
+		font-size: 18px;
+	}
+	.option2{
+		width: 90%;
+		margin: 0 auto;
+		margin-top: -10px;
+		margin-bottom: 10px;
+	}
+	.option2 td{
+		text-align: left;
+	}
+	.right{
+		float:right;
+		margin-right: 10px;
+		font-weight: bold;
+	}
+	table td{
+		width: 50%;
+		padding-top: 5px;
+		padding-bottom: 5px;
+	}
+	.back{
+		background-color: #ccc;
+	}
+	table{
+		border-spacing: 0px;
+	}
+	.explain4 p{
+		margin-left: 20px;
+	}
+	footer div{
+	background-color: #D8D8D8;
+	width: 97%;
+	padding: 1.56%;
+	text-align: center;
 	}
 </style>
 <script type="text/javascript">
@@ -223,42 +278,72 @@
 				</div>
 			</div>
 			<div class="explain2">
-				<p>${detail.leave_id}</p>
-				<p>${detail.leave_address}</p>
+				<div class="explain2_1">
+				<p class="black">${detail.leave_id}</p>
+				<p class="black">${detail.leave_address}</p>
+				<p>
 					<c:forEach var="option" items="${detail.leave_option}">
-							<span>#${option}</span>
+							<span class="option">#${option}</span>
 					</c:forEach>
+				</p>
+				</div>
 			</div>
-			
+			<div class="clear"></div>
 			<div class="explain3">
 				<div class="explain3_1">
-				<p>돌봄가능한 강아지 크기 & 나이</p>
-				<p>
-					<c:if test="${detail.leave_size=='소형견'}">0~0.49kg 까지 돌봄 가능합니다.</c:if>
-					<c:if test="${detail.leave_size=='중형견'}">0~14.9kg 까지 돌봄 가능합니다.</c:if>
+				<p>돌봄가능한 강아지 크기</p>
+				<p class="black1">
+					<c:if test="${detail.leave_size=='소형견'}">0.49kg 까지 돌봄 가능합니다.</c:if>
+					<c:if test="${detail.leave_size=='중형견'}">14.9kg 까지 돌봄 가능합니다.</c:if>
 					<c:if test="${detail.leave_size=='대형견'}">15kg이상까지 돌봄 가능합니다.</c:if>
 				</p>
 				</div>
 				<div class="explain3_2">
 					<p>체크인, 체크아웃 시간</p>
-					<p>체 크 인 : 09:00 AM ~ 09:00 PM</p>
-					<p>체 크 아 웃 : 09:00 AM ~ 09:00 PM</p>
+					<p>체크인 : <span class="black1">09:00 AM ~ 09:00 PM</span></p>
+					<p>체크아웃 : <span class="black1">09:00 AM ~ 09:00 PM</span></p>
 				</div>
 			</div>
 			
 			<div class="explain4">
-				<p>돌봄 환경</p>
-				<ul>
+				<p class="black">돌봄 환경</p>
+				<table class="option2">
+					<c:set var="num1" value="0"></c:set>
+					<c:set var="num2" value="0"></c:set>
+					<c:set var="num3" value="0"></c:set>
+					<c:set var="num4" value="0"></c:set>
+					<c:set var="num5" value="0"></c:set>
+					<c:set var="num6" value="0"></c:set>
+					
 					<c:forEach var="option" items="${detail.leave_option}">
-							${option}
+						<c:if test="${option=='아파트'}"><c:set var="num1" value="1"></c:set></c:if>
+						<c:if test="${option==' 마당'}"><c:set var="num2" value="1"></c:set></c:if>
+						<c:if test="${option==' 픽업가능'}"><c:set var="num3" value="1"></c:set></c:if>
+						<c:if test="${option==' 자격증보유'}"><c:set var="num4" value="1"></c:set></c:if>
+						<c:if test="${option==' 반려견없는곳'}"><c:set var="num5" value="1"></c:set></c:if>
+						<c:if test="${option==' 투약가능'}"><c:set var="num6" value="1"></c:set></c:if>
+						<c:if test="${option==' 응급처치'}"><c:set var="num6" value="1"></c:set></c:if>
 					</c:forEach>
-					돌봄공간		자격증보유
-					픽업가능		다른 반려견 유무
-					마당유무		반려견 재활 가능여부
-				</ul>
+					<tr>
+						<td class="back">돌봄공간:<span class="right"><c:choose><c:when test="${num1 eq '1'}">아파트</c:when><c:otherwise>단독주택</c:otherwise></c:choose></span></td><td class="back">자격증보유:<span class="right"><c:choose><c:when test="${num4 eq '1'}">보유함</c:when><c:otherwise>보유하지않음</c:otherwise></c:choose></span></td>
+					</tr>
+					<tr>
+						<td>픽업가능:<span class="right"><c:choose><c:when test="${num3 eq '1'}">픽업가능</c:when><c:otherwise>픽업불가능</c:otherwise></c:choose></span></td><td>다른 반려견 유무:<span class="right"><c:choose><c:when test="${num5 eq '1'}">반려견 있음</c:when><c:otherwise>반려견 없음</c:otherwise></c:choose></span></td>
+					</tr>
+					<tr>
+						<td class="back">마당유무:<span class="right"><c:choose><c:when test="${num2 eq '1'}">마당보유</c:when><c:otherwise>미보유</c:otherwise></c:choose></span></td><td class="back">반려견 재활 가능여부:<span class="right"><c:choose><c:when test="${num6 eq '1'}">가능</c:when><c:otherwise>불가능</c:otherwise></c:choose></span></td>
+					</tr>
+				</table>
 			</div>
-			
 		</div>
-		
+		<div class="clear"></div>
+		<br>
+		<footer>
+		<div>
+			<p>Copyright ⓒ 2018 2조 프로젝트 All rights reserved. Code Is Content
+				by 2조 License Powered by Choongang</p>
+			<p>2조: 권다인, 신성수, 유원모, 이한유, 김경범</p>
+		</div>
+		</footer>
 </body>
 </html>

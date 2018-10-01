@@ -121,7 +121,7 @@
 			<input type="checkbox" name="option" value="실외배변">실외배변
 			<input type="checkbox" name="option" value="픽업가능">픽업가능
 			<input type="checkbox" name="option" value="수제간식">수제간식
-			<input type="checkbox" name="option" value="반려견업는곳">반려견 없는 곳
+			<input type="checkbox" name="option" value="반려견없는곳">반려견 없는 곳
 			<input type="checkbox" name="option" value="응급처치">응급처치<br>
 			<input type="checkbox" name="option" value="투약가능">투약가능
 			<input type="checkbox" name="option" value="대형견">대형견
