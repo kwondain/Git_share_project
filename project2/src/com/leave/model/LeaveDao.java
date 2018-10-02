@@ -162,8 +162,6 @@ public class LeaveDao {
 				e.printStackTrace();
 			}
 		}
-		
-		
 		return 0;
 	}
 

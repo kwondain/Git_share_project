@@ -209,6 +209,7 @@
 			document.getElementById("price").innerHTML = document.getElementById("add2").value + 33000;
 		}
 	}
+
 </script>
 </head>
 <body>
@@ -252,8 +253,10 @@
 			</div>
 			<div class="explain">
 				<div class="explain_inline">
+				<form action="reservationAction.do">
+				<input type="hidden" name="leave_id" value="${detail.leave_id}">
 				<p class="explain_title">예약을 원하는 날짜를 선택해주세요.</p>
-				<span class="date"><input type="date" name="startdate">><input type="date" name="enddate"></span>
+				<span class="date"><input type="date" name="startdate" id="startdate"  required>><input type="date" name="enddate" id="enddate" required></span>
 				<p><span class="base">30,000원</span><span class="base_size">${detail.leave_size}</span></p>
 				<p class="add">반려견 추가 당 <span class="add_price">25,000원</span></p>
 				<table >
@@ -261,7 +264,7 @@
 					<th>1박</th><td><span id="add3">30000</span>원</td>
 					</tr>
 					<tr>
-					<th>반려견 추가<input type="button" value="-" onclick="mul()"><input type="number" min="0" max="5" id="number" value="0" readonly="readonly"><input type="button" value="+" onclick="add()"></th><td><span id="add2">0</span>원</td>
+					<th>반려견 추가<input type="button" value="-" onclick="mul()"><input type="number" min="0" max="5" id="number" name="number" value="0" readonly="readonly"><input type="button" value="+" onclick="add()"></th><td><span id="add2">0</span>원</td>
 					</tr>
 					<tr>
 					<th>부가세</th><td><span id="add1">3000원</span></td>
@@ -270,7 +273,8 @@
 					<th>총 합계</th><td><span id="price">33000</span>원</td>
 					</tr>
 				</table>
-				<input type="button" class="Reservation" value="예약요청하기"><br>
+					<input type="submit" class="Reservation" value="예약요청하기"><br>
+				</form>
 					<c:if test="${detail.leave_id == id }">
 						<input type="button" onclick="location='leave_delete.do?leave_id=${detail.leave_id}'" value="삭제하기">
 						<input type="button" onclick="location='leave_edit.do?leave_id=${detail.leave_id}'" value="수정하기">
