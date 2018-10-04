@@ -191,6 +191,34 @@
 	padding: 1.56%;
 	text-align: center;
 	}
+	.address{
+		border: none;
+		border-bottom: 1px solid #ccc;
+		padding: 5px;
+		font-size: 15px;
+	}
+	.Reservation_update{
+		border:none;
+		background:#48CAE1;
+		padding: 15px 60px;
+		border-radius: 5px;
+		font-size: 20px;
+		font-weight: bold;
+		color: white;
+		margin-top: 20px;
+	}
+	.Reservation_update:hover{
+		background-color: #1DDB16;
+		color:#FFBB00;
+	}
+	.title1{
+		border:none;
+		border-bottom: 2px #ccc solid;
+		font-size:30px;
+		font-weight: bold;
+		margin: 10px auto;
+		padding: 10px 200px;
+	}
 </style>
 <script type="text/javascript">
 	function mul(){
@@ -213,6 +241,7 @@
 </script>
 </head>
 <body>
+	<form action="./leave_updateAction.do">
 	<div id=wrapper>
 		<header>
 		<div class="title">
@@ -245,6 +274,11 @@
 		</ul>
 		</nav>
 		
+		<center id="body">
+			<input type="text" name="title" class="title1" value="${detail.leave_title}">
+		</center>
+		<div class="clear"></div>
+		
 		<div id="body">
 			<div class="left">
 				<div class="image">
@@ -253,10 +287,8 @@
 			</div>
 			<div class="explain">
 				<div class="explain_inline">
-				<form action="reservationAction.do">
-				<input type="hidden" name="leave_id" value="${detail.leave_id}">
-				<p class="explain_title">예약을 원하는 날짜를 선택해주세요.</p>
-				<span class="date"><input type="date" name="startdate" id="startdate"  required>><input type="date" name="enddate" id="enddate" required></span>
+				<p class="explain_title">수정하는 페이지 입니다.</p>
+				<span class="date"><input type="date" name="startdate" id="startdate"  readonly="readonly">><input type="date" name="enddate" id="enddate" readonly="readonly"></span>
 				<p><span class="base">30,000원</span><span class="base_size">${detail.leave_size}</span></p>
 				<p class="add">반려견 추가 당 <span class="add_price">25,000원</span></p>
 				<table >
@@ -273,23 +305,29 @@
 					<th>총 합계</th><td><span id="price">33000</span>원</td>
 					</tr>
 				</table>
-					<input type="submit" class="Reservation" value="예약요청하기"><br>
-				</form>
-					<c:if test="${detail.leave_id == id }">
-						<input type="button" onclick="location='./leave_delete.do?leave_id=${detail.leave_id}'" value="삭제하기">
-						<input type="button" onclick="location='./leave_edit.do?leave_id=${detail.leave_id}'" value="수정하기">
-					</c:if>
+					<input type="button" class="Reservation" value="예약요청하기"><br>
 				</div>
 			</div>
 			<div class="explain2">
 				<div class="explain2_1">
 				<p class="black">${detail.leave_id}</p>
-				<p class="black">${detail.leave_address}</p>
+				<span class="black">주소(지우고 수정) :</span> <input type="text" class="address" name="address" size="40" value="${detail.leave_address}">
 				<p>
-					<c:forEach var="option" items="${detail.leave_option}">
-							<span class="option">#${option}</span>
-					</c:forEach>
+					<span class="black">옵션을 선택해주세요</span><br>
+					<input type="checkbox" name="option" value="아파트">아파트
+					<input type="checkbox" name="option" value="마당">마당
+					<input type="checkbox" name="option" value="노령견케어">노령견케어
+					<input type="checkbox" name="option" value="자격증보유">자격증보유<br>
+					<input type="checkbox" name="option" value="실외배변">실외배변
+					<input type="checkbox" name="option" value="픽업가능">픽업가능
+					<input type="checkbox" name="option" value="수제간식">수제간식
+					<input type="checkbox" name="option" value="반려견없는곳">반려견 없는 곳
+					<input type="checkbox" name="option" value="응급처치">응급처치<br>
+					<input type="checkbox" name="option" value="투약가능">투약가능
+					<input type="checkbox" name="option" value="대형견">대형견
 				</p>
+					<p class="black">사진파일 변경을 원할경우만 넣어주세요~</p>
+					<input type="file" name="leave_file">
 				</div>
 			</div>
 			<div class="clear"></div>
@@ -297,9 +335,7 @@
 				<div class="explain3_1">
 				<p>돌봄가능한 강아지 크기</p>
 				<p class="black1">
-					<c:if test="${detail.leave_size=='소형견'}">0.49kg 까지 돌봄 가능합니다.</c:if>
-					<c:if test="${detail.leave_size=='중형견'}">14.9kg 까지 돌봄 가능합니다.</c:if>
-					<c:if test="${detail.leave_size=='대형견'}">15kg이상까지 돌봄 가능합니다.</c:if>
+					None
 				</p>
 				</div>
 				<div class="explain3_2">
@@ -312,35 +348,23 @@
 			<div class="explain4">
 				<p class="black">돌봄 환경</p>
 				<table class="option2">
-					<c:set var="num1" value="0"></c:set>
-					<c:set var="num2" value="0"></c:set>
-					<c:set var="num3" value="0"></c:set>
-					<c:set var="num4" value="0"></c:set>
-					<c:set var="num5" value="0"></c:set>
-					<c:set var="num6" value="0"></c:set>
-					
-					<c:forEach var="option" items="${detail.leave_option}">
-						<c:if test="${option=='아파트'}"><c:set var="num1" value="1"></c:set></c:if>
-						<c:if test="${option==' 마당'}"><c:set var="num2" value="1"></c:set></c:if>
-						<c:if test="${option==' 픽업가능'}"><c:set var="num3" value="1"></c:set></c:if>
-						<c:if test="${option==' 자격증보유'}"><c:set var="num4" value="1"></c:set></c:if>
-						<c:if test="${option==' 반려견없는곳'}"><c:set var="num5" value="1"></c:set></c:if>
-						<c:if test="${option==' 투약가능'}"><c:set var="num6" value="1"></c:set></c:if>
-						<c:if test="${option==' 응급처치'}"><c:set var="num6" value="1"></c:set></c:if>
-					</c:forEach>
 					<tr>
-						<td class="back">돌봄공간:<span class="right"><c:choose><c:when test="${num1 eq '1'}">아파트</c:when><c:otherwise>단독주택</c:otherwise></c:choose></span></td><td class="back">자격증보유:<span class="right"><c:choose><c:when test="${num4 eq '1'}">보유함</c:when><c:otherwise>보유하지않음</c:otherwise></c:choose></span></td>
+						<td class="back">돌봄공간:<span class="right">None</span></td><td class="back">자격증보유:<span class="right">None</span></td>
 					</tr>
 					<tr>
-						<td>픽업가능:<span class="right"><c:choose><c:when test="${num3 eq '1'}">픽업가능</c:when><c:otherwise>픽업불가능</c:otherwise></c:choose></span></td><td>다른 반려견 유무:<span class="right"><c:choose><c:when test="${num5 eq '1'}">반려견 있음</c:when><c:otherwise>반려견 없음</c:otherwise></c:choose></span></td>
+						<td>픽업가능:<span class="right">None</span></td><td>다른 반려견 유무:<span class="right">None</span></td>
 					</tr>
 					<tr>
-						<td class="back">마당유무:<span class="right"><c:choose><c:when test="${num2 eq '1'}">마당보유</c:when><c:otherwise>미보유</c:otherwise></c:choose></span></td><td class="back">반려견 재활 가능여부:<span class="right"><c:choose><c:when test="${num6 eq '1'}">가능</c:when><c:otherwise>불가능</c:otherwise></c:choose></span></td>
+						<td class="back">마당유무:<span class="right">None</span></td><td class="back">반려견 재활 가능여부:<span class="right">None</span></td>
 					</tr>
 				</table>
 			</div>
 		</div>
 		<div class="clear"></div>
+		<center>
+		<input type="submit" class="Reservation_update" value="펫시터 신청란 수정">
+		</form>
+		</center>
 		<br>
 		<footer>
 		<div>

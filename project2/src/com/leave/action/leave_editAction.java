@@ -1,8 +1,5 @@
 package com.leave.action;
 
-import java.io.PrintWriter;
-import java.util.List;
-
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -18,20 +15,19 @@ public class leave_editAction implements Action{
 		
 		request.setCharacterEncoding("utf-8");
 		response.setContentType("text/html;charset=utf-8");
-		PrintWriter out = response.getWriter();
 		
 		String leave_id = request.getParameter("leave_id");
 		
 		LeaveDao dao = new LeaveDao();
 		LeaveBean bean = dao.getleavedetail(leave_id);
 		
-		request.setAttribute("list", bean);
+		request.setAttribute("detail", bean);
 				
 		ActionForward forward = new ActionForward();
 		forward.setRedirect(false);
 		forward.setPath("./leave/leaveEdit.jsp");
 		
-		return null;
+		return forward;
 	}
 
 }

@@ -162,6 +162,16 @@ public class LeaveDao {
 				e.printStackTrace();
 			}
 		}
+		return result;
+	}
+
+	public int getUpdate(LeaveBean bean, String leave_id) {
+		
+		return 0;
+	}
+
+	public int getEditUpdate(LeaveBean bean, String leave_id) {
+		
 		return 0;
 	}
 
