@@ -1,18 +1,18 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Æê½ÃÅÍ ¸ÅÄª ¼­ºñ½º, Loving Pet</title>
+<title>íŽ«ì‹œí„° ë§¤ì¹­ ì„œë¹„ìŠ¤, Loving Pet</title>
 <link href="css/main_css.css" rel="stylesheet" type="text/css">
-<!-- ver1Àº css ¼öÁ¤ÀÌ À¥ »çÀÌÆ®¿¡ ¹Ý¿µÀÌ ¾ÈµÇ¾úÀ» ¶§¸¦ ´ëºñÇØ ÀÛ¼º -->
+<!-- ver1ì€ css ìˆ˜ì •ì´ ì›¹ ì‚¬ì´íŠ¸ì— ë°˜ì˜ì´ ì•ˆë˜ì—ˆì„ ë•Œë¥¼ ëŒ€ë¹„í•´ ìž‘ì„± -->
 <script
 	src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
 <script src="http://malsup.github.com/jquery.cycle2.js"></script>
 <script src="./js/jquery-3.js"></script>
-<!-- jQuery ÀÚ¹Ù½ºÅ©¸³Æ® ¶óÀÌºê·¯¸® ¿ÜºÎ ÆÄÀÏÀ» ÀÐ¾î¿Â´Ù -->
+<!-- jQuery ìžë°”ìŠ¤í¬ë¦½íŠ¸ ë¼ì´ë¸ŒëŸ¬ë¦¬ ì™¸ë¶€ íŒŒì¼ì„ ì½ì–´ì˜¨ë‹¤ -->
 <style>
 	#body{
 		padding-top:20px;
@@ -213,7 +213,7 @@
 </script>
 </head>
 <body>
-	<div id=wrapper>
+<div id=wrapper>
 		<header>
 		<div class="title">
 			<a href="./main.jsp"><img src="images/lovingpet.png"></a>
@@ -221,26 +221,26 @@
 		<div class="loginmenu">
  			<jsp:include page="/member/member_login.jsp" />
 <!-- 			<br><br>
-			<a href="./member_Login.do"><input type="button" value="·Î±×ÀÎ"></a> -->
+			<a href="./member_Login.do"><input type="button" value="ë¡œê·¸ì¸"></a> -->
 		</div>
 
 		<nav class="mainmenu">
 		<ul>
-			<li><a href="#">Æê½ÃÅÍ Áö¿øÇÏ±â</a>
+			<li><a href="#">íŽ«ì‹œí„° ì§€ì›í•˜ê¸°</a>
 				<ul>
-					<li><a href="#">Æê½ÃÅÍ¶õ</a></li>
-					<li><a href="#">Æê½ÃÅÍ Áö¿øÇÏ±â</a></li>
+					<li><a href="./leavepet.do">íŽ«ì‹œí„°ëž€</a></li>
+					<li><a href="./leavejoin.do">íŽ«ì‹œí„° ì§€ì›í•˜ê¸°</a></li>
 				</ul></li>
-			<li><a href="./leavelist_Action.do">Æê ¸Ã±â±â</a></li>
-			<li><a href="#">°øÁö»çÇ×&#38;°Ô½ÃÆÇ</a>
+			<li><a href="./leavelist_Action.do">íŽ« ë§¡ê¸°ê¸°</a></li>
+			<li><a href="#">ê³µì§€ì‚¬í•­&#38;ê²Œì‹œíŒ</a>
 				<ul>
-					<li><a href="gongji_list.do">°øÁö»çÇ×</a></li>
-					<li><a href="./board_list.do">ÀÚÀ¯°Ô½ÃÆÇ</a></li>
+					<li><a href="gongji_list.do">ê³µì§€ì‚¬í•­</a></li>
+					<li><a href="./board_list.do">ìžìœ ê²Œì‹œíŒ</a></li>
 				</ul></li>
-			<li><a href="#">³» ÆäÀÌÁö</a>
+			<li><a href="#">ë‚´ íŽ˜ì´ì§€</a>
 				<ul>
-					<li><a href="member_edit.do">È¸¿øÁ¤º¸ ¼öÁ¤</a></li>
-					<li><a href="#">³»°¡ ÂòÇÑ Æê½ÃÅÍ ¸®½ºÆ®</a></li>
+					<li><a href="member_edit.do">íšŒì›ì •ë³´ ìˆ˜ì •</a></li>
+					<li><a href="#">ë‚´ê°€ ì°œí•œ íŽ«ì‹œí„° ë¦¬ìŠ¤íŠ¸</a></li>
 				</ul></li>
 		</ul>
 		</nav>
@@ -255,29 +255,29 @@
 				<div class="explain_inline">
 				<form action="reservationAction.do">
 				<input type="hidden" name="leave_id" value="${detail.leave_id}">
-				<p class="explain_title">¿¹¾àÀ» ¿øÇÏ´Â ³¯Â¥¸¦ ¼±ÅÃÇØÁÖ¼¼¿ä.</p>
+				<p class="explain_title">ì˜ˆì•½ì„ ì›í•˜ëŠ” ë‚ ì§œë¥¼ ì„ íƒí•´ì£¼ì„¸ìš”.</p>
 				<span class="date"><input type="date" name="startdate" id="startdate"  required>><input type="date" name="enddate" id="enddate" required></span>
-				<p><span class="base">30,000¿ø</span><span class="base_size">${detail.leave_size}</span></p>
-				<p class="add">¹Ý·Á°ß Ãß°¡ ´ç <span class="add_price">25,000¿ø</span></p>
+				<p><span class="base">30,000ì›</span><span class="base_size">${detail.leave_size}</span></p>
+				<p class="add">ë°˜ë ¤ê²¬ ì¶”ê°€ ë‹¹ <span class="add_price">25,000ì›</span></p>
 				<table >
 					<tr>
-					<th>1¹Ú</th><td><span id="add3">30000</span>¿ø</td>
+					<th>1ë°•</th><td><span id="add3">30000</span>ì›</td>
 					</tr>
 					<tr>
-					<th>¹Ý·Á°ß Ãß°¡<input type="button" value="-" onclick="mul()"><input type="number" min="0" max="5" id="number" name="number" value="0" readonly="readonly"><input type="button" value="+" onclick="add()"></th><td><span id="add2">0</span>¿ø</td>
+					<th>ë°˜ë ¤ê²¬ ì¶”ê°€<input type="button" value="-" onclick="mul()"><input type="number" min="0" max="5" id="number" name="number" value="0" readonly="readonly"><input type="button" value="+" onclick="add()"></th><td><span id="add2">0</span>ì›</td>
 					</tr>
 					<tr>
-					<th>ºÎ°¡¼¼</th><td><span id="add1">3000¿ø</span></td>
+					<th>ë¶€ê°€ì„¸</th><td><span id="add1">3000ì›</span></td>
 					</tr>
 					<tr>
-					<th>ÃÑ ÇÕ°è</th><td><span id="price">33000</span>¿ø</td>
+					<th>ì´ í•©ê³„</th><td><span id="price">33000</span>ì›</td>
 					</tr>
 				</table>
-					<input type="submit" class="Reservation" value="¿¹¾à¿äÃ»ÇÏ±â"><br>
+					<input type="submit" class="Reservation" value="ì˜ˆì•½ìš”ì²­í•˜ê¸°"><br>
 				</form>
 					<c:if test="${detail.leave_id == id }">
-						<input type="button" onclick="location='./leave_delete.do?leave_id=${detail.leave_id}'" value="»èÁ¦ÇÏ±â">
-						<input type="button" onclick="location='./leave_edit.do?leave_id=${detail.leave_id}'" value="¼öÁ¤ÇÏ±â">
+						<input type="button" onclick="location='./leave_delete.do?leave_id=${detail.leave_id}'" value="ì‚­ì œí•˜ê¸°">
+						<input type="button" onclick="location='./leave_edit.do?leave_id=${detail.leave_id}'" value="ìˆ˜ì •í•˜ê¸°">
 					</c:if>
 				</div>
 			</div>
@@ -295,22 +295,22 @@
 			<div class="clear"></div>
 			<div class="explain3">
 				<div class="explain3_1">
-				<p>µ¹º½°¡´ÉÇÑ °­¾ÆÁö Å©±â</p>
+				<p>ëŒë´„ê°€ëŠ¥í•œ ê°•ì•„ì§€ í¬ê¸°</p>
 				<p class="black1">
-					<c:if test="${detail.leave_size=='¼ÒÇü°ß'}">0.49kg ±îÁö µ¹º½ °¡´ÉÇÕ´Ï´Ù.</c:if>
-					<c:if test="${detail.leave_size=='ÁßÇü°ß'}">14.9kg ±îÁö µ¹º½ °¡´ÉÇÕ´Ï´Ù.</c:if>
-					<c:if test="${detail.leave_size=='´ëÇü°ß'}">15kgÀÌ»ó±îÁö µ¹º½ °¡´ÉÇÕ´Ï´Ù.</c:if>
+					<c:if test="${detail.leave_size=='ì†Œí˜•ê²¬'}">0.49kg ê¹Œì§€ ëŒë´„ ê°€ëŠ¥í•©ë‹ˆë‹¤.</c:if>
+					<c:if test="${detail.leave_size=='ì¤‘í˜•ê²¬'}">14.9kg ê¹Œì§€ ëŒë´„ ê°€ëŠ¥í•©ë‹ˆë‹¤.</c:if>
+					<c:if test="${detail.leave_size=='ëŒ€í˜•ê²¬'}">15kgì´ìƒê¹Œì§€ ëŒë´„ ê°€ëŠ¥í•©ë‹ˆë‹¤.</c:if>
 				</p>
 				</div>
 				<div class="explain3_2">
-					<p>Ã¼Å©ÀÎ, Ã¼Å©¾Æ¿ô ½Ã°£</p>
-					<p>Ã¼Å©ÀÎ : <span class="black1">09:00 AM ~ 09:00 PM</span></p>
-					<p>Ã¼Å©¾Æ¿ô : <span class="black1">09:00 AM ~ 09:00 PM</span></p>
+					<p>ì²´í¬ì¸, ì²´í¬ì•„ì›ƒ ì‹œê°„</p>
+					<p>ì²´í¬ì¸ : <span class="black1">09:00 AM ~ 09:00 PM</span></p>
+					<p>ì²´í¬ì•„ì›ƒ : <span class="black1">09:00 AM ~ 09:00 PM</span></p>
 				</div>
 			</div>
 			
 			<div class="explain4">
-				<p class="black">µ¹º½ È¯°æ</p>
+				<p class="black">ëŒë´„ í™˜ê²½</p>
 				<table class="option2">
 					<c:set var="num1" value="0"></c:set>
 					<c:set var="num2" value="0"></c:set>
@@ -320,22 +320,22 @@
 					<c:set var="num6" value="0"></c:set>
 					
 					<c:forEach var="option" items="${detail.leave_option}">
-						<c:if test="${option=='¾ÆÆÄÆ®'}"><c:set var="num1" value="1"></c:set></c:if>
-						<c:if test="${option==' ¸¶´ç'}"><c:set var="num2" value="1"></c:set></c:if>
-						<c:if test="${option==' ÇÈ¾÷°¡´É'}"><c:set var="num3" value="1"></c:set></c:if>
-						<c:if test="${option==' ÀÚ°ÝÁõº¸À¯'}"><c:set var="num4" value="1"></c:set></c:if>
-						<c:if test="${option==' ¹Ý·Á°ß¾ø´Â°÷'}"><c:set var="num5" value="1"></c:set></c:if>
-						<c:if test="${option==' Åõ¾à°¡´É'}"><c:set var="num6" value="1"></c:set></c:if>
-						<c:if test="${option==' ÀÀ±ÞÃ³Ä¡'}"><c:set var="num6" value="1"></c:set></c:if>
+						<c:if test="${option=='ì•„íŒŒíŠ¸'}"><c:set var="num1" value="1"></c:set></c:if>
+						<c:if test="${option==' ë§ˆë‹¹'}"><c:set var="num2" value="1"></c:set></c:if>
+						<c:if test="${option==' í”½ì—…ê°€ëŠ¥'}"><c:set var="num3" value="1"></c:set></c:if>
+						<c:if test="${option==' ìžê²©ì¦ë³´ìœ '}"><c:set var="num4" value="1"></c:set></c:if>
+						<c:if test="${option==' ë°˜ë ¤ê²¬ì—†ëŠ”ê³³'}"><c:set var="num5" value="1"></c:set></c:if>
+						<c:if test="${option==' íˆ¬ì•½ê°€ëŠ¥'}"><c:set var="num6" value="1"></c:set></c:if>
+						<c:if test="${option==' ì‘ê¸‰ì²˜ì¹˜'}"><c:set var="num6" value="1"></c:set></c:if>
 					</c:forEach>
 					<tr>
-						<td class="back">µ¹º½°ø°£:<span class="right"><c:choose><c:when test="${num1 eq '1'}">¾ÆÆÄÆ®</c:when><c:otherwise>´Üµ¶ÁÖÅÃ</c:otherwise></c:choose></span></td><td class="back">ÀÚ°ÝÁõº¸À¯:<span class="right"><c:choose><c:when test="${num4 eq '1'}">º¸À¯ÇÔ</c:when><c:otherwise>º¸À¯ÇÏÁö¾ÊÀ½</c:otherwise></c:choose></span></td>
+						<td class="back">ëŒë´„ê³µê°„:<span class="right"><c:choose><c:when test="${num1 eq '1'}">ì•„íŒŒíŠ¸</c:when><c:otherwise>ë‹¨ë…ì£¼íƒ</c:otherwise></c:choose></span></td><td class="back">ìžê²©ì¦ë³´ìœ :<span class="right"><c:choose><c:when test="${num4 eq '1'}">ë³´ìœ í•¨</c:when><c:otherwise>ë³´ìœ í•˜ì§€ì•ŠìŒ</c:otherwise></c:choose></span></td>
 					</tr>
 					<tr>
-						<td>ÇÈ¾÷°¡´É:<span class="right"><c:choose><c:when test="${num3 eq '1'}">ÇÈ¾÷°¡´É</c:when><c:otherwise>ÇÈ¾÷ºÒ°¡´É</c:otherwise></c:choose></span></td><td>´Ù¸¥ ¹Ý·Á°ß À¯¹«:<span class="right"><c:choose><c:when test="${num5 eq '1'}">¹Ý·Á°ß ÀÖÀ½</c:when><c:otherwise>¹Ý·Á°ß ¾øÀ½</c:otherwise></c:choose></span></td>
+						<td>í”½ì—…ê°€ëŠ¥:<span class="right"><c:choose><c:when test="${num3 eq '1'}">í”½ì—…ê°€ëŠ¥</c:when><c:otherwise>í”½ì—…ë¶ˆê°€ëŠ¥</c:otherwise></c:choose></span></td><td>ë‹¤ë¥¸ ë°˜ë ¤ê²¬ ìœ ë¬´:<span class="right"><c:choose><c:when test="${num5 eq '1'}">ë°˜ë ¤ê²¬ ìžˆìŒ</c:when><c:otherwise>ë°˜ë ¤ê²¬ ì—†ìŒ</c:otherwise></c:choose></span></td>
 					</tr>
 					<tr>
-						<td class="back">¸¶´çÀ¯¹«:<span class="right"><c:choose><c:when test="${num2 eq '1'}">¸¶´çº¸À¯</c:when><c:otherwise>¹Ìº¸À¯</c:otherwise></c:choose></span></td><td class="back">¹Ý·Á°ß ÀçÈ° °¡´É¿©ºÎ:<span class="right"><c:choose><c:when test="${num6 eq '1'}">°¡´É</c:when><c:otherwise>ºÒ°¡´É</c:otherwise></c:choose></span></td>
+						<td class="back">ë§ˆë‹¹ìœ ë¬´:<span class="right"><c:choose><c:when test="${num2 eq '1'}">ë§ˆë‹¹ë³´ìœ </c:when><c:otherwise>ë¯¸ë³´ìœ </c:otherwise></c:choose></span></td><td class="back">ë°˜ë ¤ê²¬ ìž¬í™œ ê°€ëŠ¥ì—¬ë¶€:<span class="right"><c:choose><c:when test="${num6 eq '1'}">ê°€ëŠ¥</c:when><c:otherwise>ë¶ˆê°€ëŠ¥</c:otherwise></c:choose></span></td>
 					</tr>
 				</table>
 			</div>
@@ -344,9 +344,9 @@
 		<br>
 		<footer>
 		<div>
-			<p>Copyright ¨Ï 2018 2Á¶ ÇÁ·ÎÁ§Æ® All rights reserved. Code Is Content
-				by 2Á¶ License Powered by Choongang</p>
-			<p>2Á¶: ±Ç´ÙÀÎ, ½Å¼º¼ö, À¯¿ø¸ð, ÀÌÇÑÀ¯, ±è°æ¹ü</p>
+			<p>Copyright â“’ 2018 2ì¡° í”„ë¡œì íŠ¸ All rights reserved. Code Is Content
+				by 2ì¡° License Powered by Choongang</p>
+			<p>2ì¡°: ê¶Œë‹¤ì¸, ì‹ ì„±ìˆ˜, ìœ ì›ëª¨, ì´í•œìœ , ê¹€ê²½ë²”</p>
 		</div>
 		</footer>
 </body>

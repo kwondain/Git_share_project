@@ -146,7 +146,7 @@ text-align: left;
 </style>
 <body>
 <body>
-	<div id="wrapper">
+	<div id=wrapper>
 		<header>
 		<div class="title">
 			<a href="./main.jsp"><img src="images/lovingpet.png"></a>
@@ -161,10 +161,10 @@ text-align: left;
 		<ul>
 			<li><a href="#">펫시터 지원하기</a>
 				<ul>
-					<li><a href="#">펫시터란</a></li>
-					<li><a href="#">펫시터 지원하기</a></li>
+					<li><a href="./leavepet.do">펫시터란</a></li>
+					<li><a href="./leavejoin.do">펫시터 지원하기</a></li>
 				</ul></li>
-			<li><a href="#">펫 맡기기</a></li>
+			<li><a href="./leavelist_Action.do">펫 맡기기</a></li>
 			<li><a href="#">공지사항&#38;게시판</a>
 				<ul>
 					<li><a href="gongji_list.do">공지사항</a></li>

@@ -3,6 +3,8 @@ package com.order.model;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.ArrayList;
+import java.util.List;
 
 import db.DBConnection;
 
@@ -53,6 +55,32 @@ public class ReservationDAO {
 		
 		
 		return result;
+	}
+	
+	public List<Reservationbean> getReservation() {
+		List<Reservationbean> list = new ArrayList<Reservationbean>();
+		try {
+			sql = "select * from reservation";
+			
+			pstmt = conn.prepareStatement(sql);
+			rs = pstmt.executeQuery();
+			
+			while(rs.next()) {
+				Reservationbean bean = new Reservationbean();
+				
+				bean.setLeave_id(rs.getString("leave_id"));
+				bean.setId(rs.getString("id"));
+				bean.setPet_number(rs.getInt("pet_number"));
+				bean.setStartDate(rs.getString("startDate"));
+				bean.setEndDate(rs.getString("endDate"));
+				bean.setRegDate(rs.getDate("regDate"));
+				
+				list.add(bean);
+			}
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
+		return list;
 	}
 	
 }

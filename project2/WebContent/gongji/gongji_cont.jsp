@@ -3,6 +3,7 @@
 <%@ page import="com.gongji.model.*" %>
 <!-- dao 패키지의 모든 클래스를 사용하기 위해서 임포트 시킴 -->
 <%@ page import="java.util.*" %>
+<link href="css/bootstrap.css" rel="stylesheet" type="text/css">
 <!--  컬렉션 클래스를 사용하기 위해서 임포트 시킴 -->
 <!--  ../ 한 단계 상위 폴더로 이동, 외부 포함 파일을 읽어오는 jsp 형식  -->
 <div class="clear"></div>

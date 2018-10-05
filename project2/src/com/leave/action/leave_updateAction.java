@@ -14,6 +14,7 @@ import com.controller.action.ActionForward;
 import com.leave.model.LeaveBean;
 import com.leave.model.LeaveDao;
 import com.oreilly.servlet.MultipartRequest;
+import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 
 public class leave_updateAction implements Action{
 
@@ -22,6 +23,7 @@ public class leave_updateAction implements Action{
 		
 		request.setCharacterEncoding("utf-8");
 		response.setContentType("text/html;charset=utf-8");
+		
 		HttpSession session=request.getSession();
 		LeaveBean bean = new LeaveBean();
 		PrintWriter out = response.getWriter();
@@ -33,14 +35,22 @@ public class leave_updateAction implements Action{
 		multi= new MultipartRequest(request, 
 				saveFolder, 
 				fileSize,
-				"UTF-8");
+				"utf-8",
+				new DefaultFileRenamePolicy());
+		
+		
 		
 		String leave_id = (String)session.getAttribute("id");
 		String leave_address = multi.getParameter("address");
 		String leave_title = multi.getParameter("title");
 		String[] leave_option = multi.getParameterValues("option");
 		
+		
 		File leave_file = multi.getFile("leave_file");
+		
+		System.out.println(leave_id);
+		System.out.println(leave_address);
+		System.out.println(leave_title);
 		
 		if(leave_file!=null) {
 			Calendar c= Calendar.getInstance();

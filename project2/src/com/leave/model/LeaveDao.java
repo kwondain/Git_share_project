@@ -166,18 +166,54 @@ public class LeaveDao {
 	}
 
 	public int getUpdate(LeaveBean bean, String leave_id) {
+		int result = 0;
+		try {
+			sql = "update pet_leave "
+					+ " set leave_address = ?, "
+					+ " leave_title = ?, "
+					+ " leave_option = ?, "
+					+ " leave_file = ?"
+					+ " where leave_id = ?";
+			
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, bean.getLeave_address());
+			pstmt.setString(2, bean.getLeave_title());
+			pstmt.setString(3, bean.getLeave_option());
+			pstmt.setString(4, bean.getLeave_file());
+			pstmt.setString(5, bean.getLeave_id());
+			
+			result = pstmt.executeUpdate();
 		
-		return 0;
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
+		
+		return result;
 	}
 
 	public int getEditUpdate(LeaveBean bean, String leave_id) {
+		int result = 0;
+		try {
+			sql = "update pet_leave "
+				+ " set leave_address = ?, "
+				+ " leave_title = ?, "
+				+ " leave_option = ?  "
+				+ " where leave_id = ?";
+			
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, bean.getLeave_address());
+			pstmt.setString(2, bean.getLeave_title());
+			pstmt.setString(3, bean.getLeave_option());
+			pstmt.setString(4, bean.getLeave_id());
+			
+			result = pstmt.executeUpdate();
 		
-		return 0;
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
+		
+		return result;
 	}
 
-	
-	
-
-	
 	
 }

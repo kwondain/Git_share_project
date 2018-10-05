@@ -1,18 +1,18 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Æê½ÃÅÍ ¸ÅÄª ¼­ºñ½º, Loving Pet</title>
+<title>íŽ«ì‹œí„° ë§¤ì¹­ ì„œë¹„ìŠ¤, Loving Pet</title>
 <link href="css/main_css.css" rel="stylesheet" type="text/css">
-<!-- ver1Àº css ¼öÁ¤ÀÌ À¥ »çÀÌÆ®¿¡ ¹Ý¿µÀÌ ¾ÈµÇ¾úÀ» ¶§¸¦ ´ëºñÇØ ÀÛ¼º -->
+<!-- ver1ì€ css ìˆ˜ì •ì´ ì›¹ ì‚¬ì´íŠ¸ì— ë°˜ì˜ì´ ì•ˆë˜ì—ˆì„ ë•Œë¥¼ ëŒ€ë¹„í•´ ìž‘ì„± -->
 <script
 	src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
 <script src="http://malsup.github.com/jquery.cycle2.js"></script>
 <script src="./js/jquery-3.js"></script>
-<!-- jQuery ÀÚ¹Ù½ºÅ©¸³Æ® ¶óÀÌºê·¯¸® ¿ÜºÎ ÆÄÀÏÀ» ÀÐ¾î¿Â´Ù -->
+<!-- jQuery ìžë°”ìŠ¤í¬ë¦½íŠ¸ ë¼ì´ë¸ŒëŸ¬ë¦¬ ì™¸ë¶€ íŒŒì¼ì„ ì½ì–´ì˜¨ë‹¤ -->
 <style>
 	#body{
 		padding-top:20px;
@@ -241,8 +241,7 @@
 </script>
 </head>
 <body>
-	<form action="./leave_updateAction.do">
-	<div id=wrapper>
+<div id=wrapper>
 		<header>
 		<div class="title">
 			<a href="./main.jsp"><img src="images/lovingpet.png"></a>
@@ -250,30 +249,30 @@
 		<div class="loginmenu">
  			<jsp:include page="/member/member_login.jsp" />
 <!-- 			<br><br>
-			<a href="./member_Login.do"><input type="button" value="·Î±×ÀÎ"></a> -->
+			<a href="./member_Login.do"><input type="button" value="ë¡œê·¸ì¸"></a> -->
 		</div>
 
 		<nav class="mainmenu">
 		<ul>
-			<li><a href="#">Æê½ÃÅÍ Áö¿øÇÏ±â</a>
+			<li><a href="#">íŽ«ì‹œí„° ì§€ì›í•˜ê¸°</a>
 				<ul>
-					<li><a href="#">Æê½ÃÅÍ¶õ</a></li>
-					<li><a href="#">Æê½ÃÅÍ Áö¿øÇÏ±â</a></li>
+					<li><a href="./leavepet.do">íŽ«ì‹œí„°ëž€</a></li>
+					<li><a href="./leavejoin.do">íŽ«ì‹œí„° ì§€ì›í•˜ê¸°</a></li>
 				</ul></li>
-			<li><a href="./leavelist_Action.do">Æê ¸Ã±â±â</a></li>
-			<li><a href="#">°øÁö»çÇ×&#38;°Ô½ÃÆÇ</a>
+			<li><a href="./leavelist_Action.do">íŽ« ë§¡ê¸°ê¸°</a></li>
+			<li><a href="#">ê³µì§€ì‚¬í•­&#38;ê²Œì‹œíŒ</a>
 				<ul>
-					<li><a href="gongji_list.do">°øÁö»çÇ×</a></li>
-					<li><a href="./board_list.do">ÀÚÀ¯°Ô½ÃÆÇ</a></li>
+					<li><a href="gongji_list.do">ê³µì§€ì‚¬í•­</a></li>
+					<li><a href="./board_list.do">ìžìœ ê²Œì‹œíŒ</a></li>
 				</ul></li>
-			<li><a href="#">³» ÆäÀÌÁö</a>
+			<li><a href="#">ë‚´ íŽ˜ì´ì§€</a>
 				<ul>
-					<li><a href="member_edit.do">È¸¿øÁ¤º¸ ¼öÁ¤</a></li>
-					<li><a href="#">³»°¡ ÂòÇÑ Æê½ÃÅÍ ¸®½ºÆ®</a></li>
+					<li><a href="member_edit.do">íšŒì›ì •ë³´ ìˆ˜ì •</a></li>
+					<li><a href="#">ë‚´ê°€ ì°œí•œ íŽ«ì‹œí„° ë¦¬ìŠ¤íŠ¸</a></li>
 				</ul></li>
 		</ul>
 		</nav>
-		
+		<form action="leave_updateAction.do" method="post" enctype="multipart/form-data" >
 		<center id="body">
 			<input type="text" name="title" class="title1" value="${detail.leave_title}">
 		</center>
@@ -287,90 +286,90 @@
 			</div>
 			<div class="explain">
 				<div class="explain_inline">
-				<p class="explain_title">¼öÁ¤ÇÏ´Â ÆäÀÌÁö ÀÔ´Ï´Ù.</p>
-				<span class="date"><input type="date" name="startdate" id="startdate"  readonly="readonly">><input type="date" name="enddate" id="enddate" readonly="readonly"></span>
-				<p><span class="base">30,000¿ø</span><span class="base_size">${detail.leave_size}</span></p>
-				<p class="add">¹Ý·Á°ß Ãß°¡ ´ç <span class="add_price">25,000¿ø</span></p>
+				<p class="explain_title">ìˆ˜ì •í•˜ëŠ” íŽ˜ì´ì§€ ìž…ë‹ˆë‹¤.</p>
+				<span class="date"><input type="date" id="startdate"  readonly="readonly">><input type="date" id="enddate" readonly="readonly"></span>
+				<p><span class="base">30,000ì›</span><span class="base_size">${detail.leave_size}</span></p>
+				<p class="add">ë°˜ë ¤ê²¬ ì¶”ê°€ ë‹¹ <span class="add_price">25,000ì›</span></p>
 				<table >
 					<tr>
-					<th>1¹Ú</th><td><span id="add3">30000</span>¿ø</td>
+					<th>1ë°•</th><td><span id="add3">30000</span>ì›</td>
 					</tr>
 					<tr>
-					<th>¹Ý·Á°ß Ãß°¡<input type="button" value="-" onclick="mul()"><input type="number" min="0" max="5" id="number" name="number" value="0" readonly="readonly"><input type="button" value="+" onclick="add()"></th><td><span id="add2">0</span>¿ø</td>
+					<th>ë°˜ë ¤ê²¬ ì¶”ê°€<input type="button" value="-" onclick="mul()"><input type="number" min="0" max="5" id="number" name="number" value="0" readonly="readonly"><input type="button" value="+" onclick="add()"></th><td><span id="add2">0</span>ì›</td>
 					</tr>
 					<tr>
-					<th>ºÎ°¡¼¼</th><td><span id="add1">3000¿ø</span></td>
+					<th>ë¶€ê°€ì„¸</th><td><span id="add1">3000ì›</span></td>
 					</tr>
 					<tr>
-					<th>ÃÑ ÇÕ°è</th><td><span id="price">33000</span>¿ø</td>
+					<th>ì´ í•©ê³„</th><td><span id="price">33000</span>ì›</td>
 					</tr>
 				</table>
-					<input type="button" class="Reservation" value="¿¹¾à¿äÃ»ÇÏ±â"><br>
+					<input type="button" class="Reservation" value="ì˜ˆì•½ìš”ì²­í•˜ê¸°"><br>
 				</div>
 			</div>
 			<div class="explain2">
 				<div class="explain2_1">
 				<p class="black">${detail.leave_id}</p>
-				<span class="black">ÁÖ¼Ò(Áö¿ì°í ¼öÁ¤) :</span> <input type="text" class="address" name="address" size="40" value="${detail.leave_address}">
+				<span class="black">ì£¼ì†Œ(ì§€ìš°ê³  ìˆ˜ì •) :</span> <input type="text" class="address" name="address" size="40" value="${detail.leave_address}">
 				<p>
-					<span class="black">¿É¼ÇÀ» ¼±ÅÃÇØÁÖ¼¼¿ä</span><br>
-					<input type="checkbox" name="option" value="¾ÆÆÄÆ®">¾ÆÆÄÆ®
-					<input type="checkbox" name="option" value="¸¶´ç">¸¶´ç
-					<input type="checkbox" name="option" value="³ë·É°ßÄÉ¾î">³ë·É°ßÄÉ¾î
-					<input type="checkbox" name="option" value="ÀÚ°ÝÁõº¸À¯">ÀÚ°ÝÁõº¸À¯<br>
-					<input type="checkbox" name="option" value="½Ç¿Ü¹èº¯">½Ç¿Ü¹èº¯
-					<input type="checkbox" name="option" value="ÇÈ¾÷°¡´É">ÇÈ¾÷°¡´É
-					<input type="checkbox" name="option" value="¼öÁ¦°£½Ä">¼öÁ¦°£½Ä
-					<input type="checkbox" name="option" value="¹Ý·Á°ß¾ø´Â°÷">¹Ý·Á°ß ¾ø´Â °÷
-					<input type="checkbox" name="option" value="ÀÀ±ÞÃ³Ä¡">ÀÀ±ÞÃ³Ä¡<br>
-					<input type="checkbox" name="option" value="Åõ¾à°¡´É">Åõ¾à°¡´É
-					<input type="checkbox" name="option" value="´ëÇü°ß">´ëÇü°ß
+					<span class="black">ì˜µì…˜ì„ ì„ íƒí•´ì£¼ì„¸ìš”</span><br>
+					<input type="checkbox" name="option" value="ì•„íŒŒíŠ¸">ì•„íŒŒíŠ¸
+					<input type="checkbox" name="option" value="ë§ˆë‹¹">ë§ˆë‹¹
+					<input type="checkbox" name="option" value="ë…¸ë ¹ê²¬ì¼€ì–´">ë…¸ë ¹ê²¬ì¼€ì–´
+					<input type="checkbox" name="option" value="ìžê²©ì¦ë³´ìœ ">ìžê²©ì¦ë³´ìœ <br>
+					<input type="checkbox" name="option" value="ì‹¤ì™¸ë°°ë³€">ì‹¤ì™¸ë°°ë³€
+					<input type="checkbox" name="option" value="í”½ì—…ê°€ëŠ¥">í”½ì—…ê°€ëŠ¥
+					<input type="checkbox" name="option" value="ìˆ˜ì œê°„ì‹">ìˆ˜ì œê°„ì‹
+					<input type="checkbox" name="option" value="ë°˜ë ¤ê²¬ì—†ëŠ”ê³³">ë°˜ë ¤ê²¬ ì—†ëŠ” ê³³
+					<input type="checkbox" name="option" value="ì‘ê¸‰ì²˜ì¹˜">ì‘ê¸‰ì²˜ì¹˜<br>
+					<input type="checkbox" name="option" value="íˆ¬ì•½ê°€ëŠ¥">íˆ¬ì•½ê°€ëŠ¥
+					<input type="checkbox" name="option" value="ëŒ€í˜•ê²¬">ëŒ€í˜•ê²¬
 				</p>
-					<p class="black">»çÁøÆÄÀÏ º¯°æÀ» ¿øÇÒ°æ¿ì¸¸ ³Ö¾îÁÖ¼¼¿ä~</p>
+					<p class="black">ì‚¬ì§„íŒŒì¼ ë³€ê²½ì„ ì›í• ê²½ìš°ë§Œ ë„£ì–´ì£¼ì„¸ìš”~</p>
 					<input type="file" name="leave_file">
 				</div>
 			</div>
 			<div class="clear"></div>
 			<div class="explain3">
 				<div class="explain3_1">
-				<p>µ¹º½°¡´ÉÇÑ °­¾ÆÁö Å©±â</p>
+				<p>ëŒë´„ê°€ëŠ¥í•œ ê°•ì•„ì§€ í¬ê¸°</p>
 				<p class="black1">
 					None
 				</p>
 				</div>
 				<div class="explain3_2">
-					<p>Ã¼Å©ÀÎ, Ã¼Å©¾Æ¿ô ½Ã°£</p>
-					<p>Ã¼Å©ÀÎ : <span class="black1">09:00 AM ~ 09:00 PM</span></p>
-					<p>Ã¼Å©¾Æ¿ô : <span class="black1">09:00 AM ~ 09:00 PM</span></p>
+					<p>ì²´í¬ì¸, ì²´í¬ì•„ì›ƒ ì‹œê°„</p>
+					<p>ì²´í¬ì¸ : <span class="black1">09:00 AM ~ 09:00 PM</span></p>
+					<p>ì²´í¬ì•„ì›ƒ : <span class="black1">09:00 AM ~ 09:00 PM</span></p>
 				</div>
 			</div>
 			
 			<div class="explain4">
-				<p class="black">µ¹º½ È¯°æ</p>
+				<p class="black">ëŒë´„ í™˜ê²½</p>
 				<table class="option2">
 					<tr>
-						<td class="back">µ¹º½°ø°£:<span class="right">None</span></td><td class="back">ÀÚ°ÝÁõº¸À¯:<span class="right">None</span></td>
+						<td class="back">ëŒë´„ê³µê°„:<span class="right">None</span></td><td class="back">ìžê²©ì¦ë³´ìœ :<span class="right">None</span></td>
 					</tr>
 					<tr>
-						<td>ÇÈ¾÷°¡´É:<span class="right">None</span></td><td>´Ù¸¥ ¹Ý·Á°ß À¯¹«:<span class="right">None</span></td>
+						<td>í”½ì—…ê°€ëŠ¥:<span class="right">None</span></td><td>ë‹¤ë¥¸ ë°˜ë ¤ê²¬ ìœ ë¬´:<span class="right">None</span></td>
 					</tr>
 					<tr>
-						<td class="back">¸¶´çÀ¯¹«:<span class="right">None</span></td><td class="back">¹Ý·Á°ß ÀçÈ° °¡´É¿©ºÎ:<span class="right">None</span></td>
+						<td class="back">ë§ˆë‹¹ìœ ë¬´:<span class="right">None</span></td><td class="back">ë°˜ë ¤ê²¬ ìž¬í™œ ê°€ëŠ¥ì—¬ë¶€:<span class="right">None</span></td>
 					</tr>
 				</table>
 			</div>
 		</div>
 		<div class="clear"></div>
 		<center>
-		<input type="submit" class="Reservation_update" value="Æê½ÃÅÍ ½ÅÃ»¶õ ¼öÁ¤">
+		<input type="submit" class="Reservation_update" value="íŽ«ì‹œí„° ì‹ ì²­ëž€ ìˆ˜ì •">
 		</form>
 		</center>
 		<br>
 		<footer>
 		<div>
-			<p>Copyright ¨Ï 2018 2Á¶ ÇÁ·ÎÁ§Æ® All rights reserved. Code Is Content
-				by 2Á¶ License Powered by Choongang</p>
-			<p>2Á¶: ±Ç´ÙÀÎ, ½Å¼º¼ö, À¯¿ø¸ð, ÀÌÇÑÀ¯, ±è°æ¹ü</p>
+			<p>Copyright â“’ 2018 2ì¡° í”„ë¡œì íŠ¸ All rights reserved. Code Is Content
+				by 2ì¡° License Powered by Choongang</p>
+			<p>2ì¡°: ê¶Œë‹¤ì¸, ì‹ ì„±ìˆ˜, ìœ ì›ëª¨, ì´í•œìœ , ê¹€ê²½ë²”</p>
 		</div>
 		</footer>
 </body>
