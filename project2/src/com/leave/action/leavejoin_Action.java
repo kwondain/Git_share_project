@@ -103,13 +103,14 @@ public class leavejoin_Action implements Action{
 		int result = dao.insertLeave(bean);
 		
 		if(result > 0) {
+
 			ActionForward forward = new ActionForward();
 			forward.setRedirect(true);// *.do로 이동
 			forward.setPath("./main.jsp");
 			return forward;
 		}else {
 			out.println("<script>");
-			out.println("alert('등록에 실패했습니다.';");
+			out.println("alert('등록에 실패했습니다.');");
 			out.println("history.back();");
 			out.println("</script>");
 		}

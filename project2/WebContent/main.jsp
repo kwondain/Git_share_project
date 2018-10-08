@@ -5,7 +5,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>펫시터 매칭 서비스, Loving Pet</title>
-<link href="css/main_css.css?ver=1" rel="stylesheet" type="text/css">
+<link href="css/main_css.css" rel="stylesheet" type="text/css">
 <!-- ver1은 css 수정이 웹 사이트에 반영이 안되었을 때를 대비해 작성 -->
 <script
 	src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
@@ -29,8 +29,8 @@
 		<ul>
 			<li><a href="#">펫시터 지원하기</a>
 				<ul>
-					<li><a href="#">펫시터란</a></li>
-					<li><a href="#">펫시터 지원하기</a></li>
+					<li><a href="./leavepet.do">펫시터란</a></li>
+					<li><a href="./leavejoin.do">펫시터 지원하기</a></li>
 				</ul></li>
 			<li><a href="./leavelist_Action.do">펫 맡기기</a></li>
 			<li><a href="#">공지사항&#38;게시판</a>
@@ -86,9 +86,10 @@
 				</div>
 			</div>
 		</div>
+		
 		<footer>
 		<div>
-			<p>Copyright @ 2018 2조 프로젝트 All rights reserved. Code Is Content
+			<p>Copyright ⓒ 2018 2조 프로젝트 All rights reserved. Code Is Content
 				by 2조 License Powered by Choongang</p>
 			<p>2조: 권다인, 신성수, 유원모, 이한유, 김경범</p>
 		</div>

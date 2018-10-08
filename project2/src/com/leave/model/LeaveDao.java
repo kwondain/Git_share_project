@@ -107,7 +107,112 @@ public class LeaveDao {
 		}
 		return list;
 	}
-	
-	
-	
+
+	public LeaveBean getleavedetail(String leave_id) {
+		
+		LeaveBean bean = new LeaveBean();
+		
+		try {
+			sql = "select * from pet_leave where leave_id = ?";
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, leave_id);
+			rs = pstmt.executeQuery();
+			if(rs.next()) {
+				bean.setLeave_id(rs.getString("leave_id"));
+				bean.setLeave_name(rs.getString("leave_name"));
+				bean.setLeave_birth(rs.getString("leave_birth"));
+				bean.setLeave_tel(rs.getString("leave_tel"));
+				bean.setLeave_address(rs.getString("leave_address"));
+				bean.setLeave_title(rs.getString("leave_title"));
+				bean.setLeave_size(rs.getString("leave_size"));
+				bean.setLeave_age(rs.getString("leave_age"));
+				bean.setLeave_option(rs.getString("leave_option"));
+				bean.setLeave_file(rs.getString("leave_file"));
+			}
+			
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
+		return bean;
+	}
+
+	public int deleteLeave(String leave_id) {
+		
+		int result = 0;
+		try {
+			conn.setAutoCommit(false);
+			sql = "delete from pet_leave where leave_id = ?";
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, leave_id);
+			result = pstmt.executeUpdate();
+			
+			conn.commit();
+			
+		}catch(Exception e) {
+			e.printStackTrace();
+			try {
+				conn.rollback();
+			}catch(Exception e1) {
+				e1.printStackTrace();
+			}
+		}finally {
+			try {
+				conn.setAutoCommit(true);
+			}catch(Exception e) {
+				e.printStackTrace();
+			}
+		}
+		return result;
+	}
+
+	public int getUpdate(LeaveBean bean, String leave_id) {
+		int result = 0;
+		try {
+			sql = "update pet_leave "
+					+ " set leave_address = ?, "
+					+ " leave_title = ?, "
+					+ " leave_option = ?, "
+					+ " leave_file = ?"
+					+ " where leave_id = ?";
+			
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, bean.getLeave_address());
+			pstmt.setString(2, bean.getLeave_title());
+			pstmt.setString(3, bean.getLeave_option());
+			pstmt.setString(4, bean.getLeave_file());
+			pstmt.setString(5, bean.getLeave_id());
+			
+			result = pstmt.executeUpdate();
+		
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
+		
+		return result;
+	}
+
+	public int getEditUpdate(LeaveBean bean, String leave_id) {
+		int result = 0;
+		try {
+			sql = "update pet_leave "
+				+ " set leave_address = ?, "
+				+ " leave_title = ?, "
+				+ " leave_option = ?  "
+				+ " where leave_id = ?";
+			
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, bean.getLeave_address());
+			pstmt.setString(2, bean.getLeave_title());
+			pstmt.setString(3, bean.getLeave_option());
+			pstmt.setString(4, bean.getLeave_id());
+			
+			result = pstmt.executeUpdate();
+		
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
+		
+		return result;
+	}
+
 }
