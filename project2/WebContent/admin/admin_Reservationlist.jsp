@@ -1,10 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <link href="css/main_css.css?ver=1" rel="stylesheet" type="text/css">
+<link href="css/bootstrap.css" rel="stylesheet" type="text/css">
 <title>Insert title here</title>
 </head>
 <body>
@@ -40,6 +43,32 @@
 		</ul>
 		</nav>
 		
-	${list}
+	<div id="article_c">
+		 <h2 class="Glist_title" style="text-align:center;">예약 목록</h2>
+		<div id="Gongji_list">
+		<table id="Glist_t"
+		style="text-align: center; width: 60%; margin-left: auto; margin-right: auto; border:1px solid #ccc;">
+			<tr>
+				<th> 요청한 ID </th>
+				<th> 요청 받은 펫시터 ID </th>
+				<th> 맡기는 Pet 숫자 </th>
+				<th> 맡기는 날짜 </th>
+				<th> 돌봄 끝나는 날짜 </th>
+				<th> 주문한 시각 </th>
+			</tr>
+			<c:forEach var="list" items="${list}">
+			<tr align="center" valign="middle">
+				<td> ${list.id} </td>
+				<td> ${list.leave_id} </td>
+				<td> ${list.pet_number} </td>
+				<td> ${list.startDate}</td>
+				<td> ${list.endDate}</td>
+				<td> ${list.regDate}</td>
+			</tr>
+			</c:forEach>
+		</table>
+		</div>
+	</div>
+	<div class="clear"></div>
 </body>
 </html>
