@@ -320,7 +320,7 @@ public class MemberDAO {
 			while(rs.next()) {
 				while(rs.next()) {
 					String context = rs.getString(1);
-					sendMail("아이디찾기",context,"tlstjdtn321","관리자");
+					sendMail("비밀번호 찾기",context,"tlstjdtn321","관리자");
 					result = 1;
 				}
 				result = 1;
