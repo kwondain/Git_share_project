@@ -38,6 +38,11 @@
 	}
 </script>     -->
 <link href="css/bootstrap.css " rel="stylesheet" type="text/css">
+<style>
+	th{
+		width:20%;
+	}
+</style>
 </head>
 <div id=wrapper>
 		<header>
@@ -98,15 +103,15 @@
             <ul>
                 <li>
                     <div class="id_finder">
-                    <form action="id_finde.jsp">
+                    <form action="id_finde.do">
                         <table class="table">
                             <tr>
                                 <th class="name">이름</th>
                                 <td><input type="text" name="id_name" id="id_name"class="form-control"></td>
                             </tr>
                             <tr>
-                                <th>생년월일</th>
-                                <td><input type="date" name="id_birth" id="id_birth"class="form-control"></td>
+                                <th>이메일주소</th>
+                                <td><input type="text" name="email" id="email"class="form-control"></td>
                             </tr>
                         </table>
                         <div class="button"style="text-align: center;">
@@ -117,7 +122,7 @@
                 </li>
                 <li>
                     <div class="password_finder">
-                    <form method="post" action="password_find.jsp" name="pass" onsubmit="return chk()">
+                    <form method="post" action="password_find.do" name="pass" onsubmit="return chk()">
                         <table class="table">
                             <tr>
                                 <th class="id">아이디</th>
@@ -132,11 +137,11 @@
                                 <td><input type="date" name="password_birth" id="password_birth"class="form-control"></td>
                             </tr>
                             <tr>
-                                <th>이메일주소</th>
+                                <th>이메일</th>
                                 <td><input type="text" name="password_email" id="password_email"class="form-control"></td>
                             </tr>
                             <tr>
-                            	<th>방지문자 인증</th>
+                            	<th>방지문자</th>
                             	<td>
                             	<script>
                             	document.write("<img src=./images/"+imgNumber+".jpg>");

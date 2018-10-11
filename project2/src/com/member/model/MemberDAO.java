@@ -11,6 +11,8 @@ import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.sql.DataSource;
 
+import org.apache.commons.mail.SimpleEmail;
+
 import db.DBConnection;
 
 // DAO 클래스 = 디비 연동 클래스
@@ -281,6 +283,78 @@ public class MemberDAO {
 		}
 		return re;
 	}
+
+	public int idfindMember(String id_name, String email) {
+		int result = -1;
+		try {
+			sql = "select member_id from "
+				+ " pet_Member where member_name = ? and member_email = ?";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, id_name);
+			pstmt.setString(2, email);
+			
+			rs = pstmt.executeQuery();
+			while(rs.next()) {
+				String context = rs.getString("member_id");
+				sendMail("아이디찾기",context,"tlstjdtn321@naver.com","관리자");
+				result = 1;
+			}
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
+		
+		return result;
+	}
+
+	public int passwordfind(String id, String name, String email) {
+		int result = -1;
+		
+		try {
+			sql = "select member_pass "
+				+ " from pet_Member where member_id =? and member_name= ? and member_email =?";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, id);
+			pstmt.setString(2, name);
+			pstmt.setString(3, email);
+			rs = pstmt.executeQuery();
+			while(rs.next()) {
+				while(rs.next()) {
+					String context = rs.getString(1);
+					sendMail("아이디찾기",context,"tlstjdtn321","관리자");
+					result = 1;
+				}
+				result = 1;
+			}
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
+		
+		return result;
+	}
+	
+	public void sendMail(String subject, String content,String emailId, String receiver) throws Exception{
+		final String HOST_NAME = "smtp.naver.com";
+		final int PORT_NUMBER = 465;
+		final String CONTENT_TYPE="text/plain;charset=utf-8";
+		
+		SimpleEmail email = new SimpleEmail(); 
+		email.setCharset("utf-8");	//문자셋 설정
+		email.setHostName(HOST_NAME);	//SMTP 서버 설정
+		email.setSmtpPort(PORT_NUMBER);		//포트번호설정
+		email.setSSL(true);			//보안설정
+		email.setTLS(true);			//보안설정
+		//보내는 사람의 이메일 id와 비밀번호를 저장
+		email.setAuthentication("tlstjdtn321", "k2244406!");
+		
+		email.setSubject(subject);	
+		email.setContent(content,CONTENT_TYPE);
+		
+		email.addTo(emailId,receiver);	//수신자 이메일 주소
+		email.setFrom("tlstjdtn321@naver.com","신성수");	//발신자 이메일 주소
+		//메일 발송
+		email.send();
+	}
+	
 }
 
 
